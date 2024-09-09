@@ -1,4 +1,6 @@
-# create-svelte
+[![Netlify Status](https://api.netlify.com/api/v1/badges/6fa3eb7f-bb20-4a29-a92f-c9bd39b54a9a/deploy-status)](https://app.netlify.com/sites/metalturtle18-personal-website/deploys)
+
+# personal-website
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
 
