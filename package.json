@@ -11,9 +11,9 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@astrojs/svelte": "^7.2.0",
+    "@astrojs/svelte": "^7.2.2",
     "@eslint/js": "^9.37.0",
-    "astro": "^5.14.4"
+    "astro": "^5.15.9"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^8.46.0",
