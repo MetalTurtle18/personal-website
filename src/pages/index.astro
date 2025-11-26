@@ -1,8 +1,64 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import headshot from '../assets/mugshot.jpg';
+
+const name = 'Dorian Kolis';
+const title = 'Electrical (Biomedical) Engineering at Dartmouth College';
+const bio =
+  'I am an aspiring engineer studying at Dartmouth College with extensive experience in engineering, programming, and biology. I love learning and have a passion for solving problems at the intersection of my interests through human-centered design.';
 ---
 
 <Layout>
-  <Welcome />
+  <div class="container">
+    <img src={headshot.src} alt="Headshot that looks like a mugshot" class="headshot" />
+    <h1>{name}</h1>
+    <div class="title">{title}</div>
+    <p>{bio}</p>
+  </div>
 </Layout>
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #fafafa;
+  }
+
+  .container {
+    max-width: 700px;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  img.headshot {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+    border: 2px solid #ddd;
+  }
+
+  h1 {
+    margin: 0.25rem 0;
+    font-size: 2rem;
+  }
+
+  .title {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+  }
+
+  p {
+    line-height: 1.5;
+    color: #333;
+    max-width: 50ch;
+    margin: 0 auto;
+  }
+</style>
