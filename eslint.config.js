@@ -2,8 +2,6 @@
 import js from '@eslint/js';
 import ts from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
-import svelte from 'eslint-plugin-svelte';
-import svelteParser from 'svelte-eslint-parser';
 import astro from 'eslint-plugin-astro';
 import astroParser from 'astro-eslint-parser';
 import prettier from 'eslint-config-prettier';
@@ -27,21 +25,6 @@ export default [
       ...ts.configs.recommended.rules,
       'no-unused-vars': 'warn',
       'no-console': 'off',
-    },
-  },
-
-  // Svelte
-  {
-    files: ['**/*.svelte'],
-    languageOptions: {
-      parser: svelteParser,
-      parserOptions: {
-        parser: tsParser,
-      },
-    },
-    plugins: { svelte },
-    rules: {
-      ...svelte.configs.recommended.rules,
     },
   },
 
