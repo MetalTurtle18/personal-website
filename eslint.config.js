@@ -7,6 +7,7 @@ import svelteParser from 'svelte-eslint-parser';
 import astro from 'eslint-plugin-astro';
 import astroParser from 'astro-eslint-parser';
 import prettier from 'eslint-config-prettier';
+import { globalIgnores } from 'eslint/config';
 
 export default [
   js.configs.recommended,
@@ -63,4 +64,6 @@ export default [
 
   // Disable formatting conflicts
   prettier,
+  // Global ignores
+  globalIgnores(['.astro/*', 'dist/*']),
 ];
