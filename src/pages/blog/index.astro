@@ -1,0 +1,110 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import ContentCard from '../../components/ContentCard.astro';
+
+// Get all blog posts and sort by date (newest first)
+const allPosts = await getCollection('blog');
+const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<Layout title="Blog - Dorian Kolis">
+  <div class="blog-page">
+    <header class="page-header">
+      <h1>Blog</h1>
+      <p class="page-description">Thoughts, ideas, and projects I'm working on.</p>
+    </header>
+
+    <section class="posts-grid">
+      {
+        sortedPosts.map((post) => (
+          <ContentCard
+            title={post.data.title}
+            description={post.data.description}
+            pubDate={post.data.pubDate}
+            slug={post.id}
+            image={post.data.image}
+            type="blog"
+          />
+        ))
+      }
+    </section>
+
+    {
+      sortedPosts.length === 0 && (
+        <div class="empty-state">
+          <p>No blog posts yet. Check back soon!</p>
+        </div>
+      )
+    }
+  </div>
+</Layout>
+
+<style>
+  .blog-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .page-header h1 {
+    font-size: 3rem;
+    margin: 0 0 1rem 0;
+    color: #000;
+  }
+
+  .page-description {
+    font-size: 1.2rem;
+    color: #555;
+    margin: 0;
+  }
+
+  .tags-section {
+    margin-bottom: 3rem;
+    padding: 1.5rem;
+    background: #fafafa;
+    border-radius: 8px;
+  }
+
+  .section-title {
+    font-size: 1rem;
+    margin: 0 0 1rem 0;
+    color: #555;
+    font-weight: 600;
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: #777;
+  }
+
+  @media (max-width: 768px) {
+    .blog-page {
+      padding: 2rem 1rem;
+    }
+
+    .page-header h1 {
+      font-size: 2.5rem;
+    }
+
+    .page-description {
+      font-size: 1.1rem;
+    }
+
+    .posts-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

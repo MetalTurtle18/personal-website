@@ -1,38 +1,96 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+import ContentCard from '../components/ContentCard.astro';
 import headshot from '../assets/mugshot.jpg';
 
 const name = 'Dorian Kolis';
 const title = 'Electrical (Biomedical) Engineering at Dartmouth College';
 const bio =
   'I am an aspiring engineer studying at Dartmouth College with extensive experience in engineering, programming, and biology. I love learning and have a passion for solving problems at the intersection of my interests through human-centered design.';
+
+// Get featured blog posts
+const featuredPosts = (await getCollection('blog'))
+  .filter((post) => post.data.featured)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+// Get featured projects
+const featuredProjects = (await getCollection('projects'))
+  .filter((project) => project.data.featured)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const hasFeaturedContent = featuredPosts.length > 0 || featuredProjects.length > 0;
 ---
 
 <Layout>
-  <div class="container">
+  <div class="profile">
     <img src={headshot.src} alt="Headshot that looks like a mugshot" class="headshot" />
     <h1>{name}</h1>
     <div class="title">{title}</div>
     <p>{bio}</p>
   </div>
+
+  {
+    hasFeaturedContent && (
+      <section class="featured-section">
+        {featuredProjects.length > 0 && (
+          <div class="featured-content">
+            <div class="featured-header">
+              <h2>Featured Projects</h2>
+              <a href="/projects" class="view-all-link">
+                View all projects →
+              </a>
+            </div>
+            <div class="featured-grid">
+              {featuredProjects.map((project) => (
+                <ContentCard
+                  title={project.data.title}
+                  description={project.data.description}
+                  pubDate={project.data.pubDate}
+                  slug={project.id}
+                  image={project.data.image}
+                  type="projects"
+                />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {featuredPosts.length > 0 && (
+          <div class="featured-content">
+            <div class="featured-header">
+              <h2>Featured Posts</h2>
+              <a href="/blog" class="view-all-link">
+                View all posts →
+              </a>
+            </div>
+            <div class="featured-grid">
+              {featuredPosts.map((post) => (
+                <ContentCard
+                  title={post.data.title}
+                  description={post.data.description}
+                  pubDate={post.data.pubDate}
+                  slug={post.id}
+                  image={post.data.image}
+                  type="blog"
+                />
+              ))}
+            </div>
+          </div>
+        )}
+      </section>
+    )
+  }
 </Layout>
 
 <style>
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: system-ui, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: #fafafa;
-  }
-
-  .container {
+  .profile {
     max-width: 700px;
     padding: 2rem;
     text-align: center;
+    margin: 0 auto;
   }
 
   img.headshot {
@@ -60,5 +118,66 @@ const bio =
     color: #333;
     max-width: 50ch;
     margin: 0 auto;
+  }
+
+  .featured-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+
+  .featured-content {
+    margin-bottom: 4rem;
+  }
+
+  .featured-content:last-child {
+    margin-bottom: 0;
+  }
+
+  .featured-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .featured-header h2 {
+    font-size: 2rem;
+    margin: 0;
+    color: #000;
+  }
+
+  .view-all-link {
+    color: #0066cc;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.2s ease;
+  }
+
+  .view-all-link:hover {
+    color: #004499;
+    text-decoration: underline;
+  }
+
+  .featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .featured-section {
+      padding: 3rem 1rem;
+    }
+
+    .featured-header h2 {
+      font-size: 1.75rem;
+    }
+
+    .featured-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>

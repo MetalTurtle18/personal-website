@@ -1,8 +1,9 @@
 ---
 title: 'My First Blog Post'
 pubDate: 2022-07-01
-description: 'This is the first post of my new Astro blog.'
-author: 'Astro Learner'
+description: '[ASTRO-GENERATED SAMPLE] This is the first post of my new Astro blog.'
+author: 'Dorian Kolis'
+featured: true
 image:
   url: 'https://docs.astro.build/assets/rose.webp'
   alt: 'The Astro logo on a dark background with a pink glow.'

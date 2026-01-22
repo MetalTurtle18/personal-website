@@ -1,4 +1,6 @@
 ---
+import Navigation from '../components/Navigation.astro';
+
 const { title = 'Dorian Kolis' } = Astro.props;
 ---
 
@@ -13,6 +15,7 @@ const { title = 'Dorian Kolis' } = Astro.props;
   </head>
   <body>
     <div class="notice">This site is in progress.</div>
+    <Navigation />
     <slot />
   </body>
 </html>
@@ -26,7 +29,6 @@ const { title = 'Dorian Kolis' } = Astro.props;
   }
 
   .notice {
-    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
