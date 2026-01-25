@@ -8,10 +8,6 @@ featured: true
 tags: ['astro', 'web-development']
 ---
 
-## This is an AI-generated completely fake post
-
----
-
 # Example Project
 
 This is an example project to demonstrate the projects collection feature.
