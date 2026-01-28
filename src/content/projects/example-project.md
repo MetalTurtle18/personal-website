@@ -5,7 +5,6 @@ description: '[AI-GENERATED SAMPLE] A sample project demonstrating the projects 
 summary: "A sample project demonstrating the projects collection in Astro. But this is a summary so it will be a bit longer. I will write several sentences here so it can showcase the layout that I will make for the summary section of an article. I am going to keep writing now to pad this out a bit more and take up a few more lines of the page. I think writing this one more sentence will probably be enough so let's just keep going on a little bit longer and then it'll be good to stop and see what this looks like on the page."
 author: 'Claude'
 featured: true
-tags: ['astro', 'web-development']
 ---
 
 # Example Project
