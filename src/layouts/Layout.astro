@@ -109,7 +109,7 @@ const { title = 'Dorian Kolis' } = Astro.props;
           </p>
           <br />
           <div class="footer-ai-note" title="Sorry, I still think I am a better writer.">
-            <p>Unless otherwise indicated, no text content on this website is written with "AI."</p>
+            <p>Unless otherwise indicated, no text content on this website is written with AI.</p>
           </div>
         </div>
       </div>
@@ -236,6 +236,11 @@ const { title = 'Dorian Kolis' } = Astro.props;
     width: 3rem;
     border-radius: 0.5rem;
     padding: 0.3rem;
+  }
+
+  .footer-links svg:not(.youtube) {
+    /* Don't add the extra margin to YouTube since it is the last one */
+    margin-right: 0.3rem;
   }
 
   .github {
