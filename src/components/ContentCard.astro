@@ -3,12 +3,13 @@ interface Props {
   title: string;
   description: string;
   pubDate: Date;
+  chronoDate?: Date;
   slug: string;
   image?: { url: string; alt: string };
   type: 'blog' | 'projects';
 }
 
-const { title, description, pubDate, slug, image, type } = Astro.props;
+const { title, description, pubDate, chronoDate, slug, image, type } = Astro.props;
 
 const formattedDate = pubDate.toLocaleDateString('en-US', {
   year: 'numeric',

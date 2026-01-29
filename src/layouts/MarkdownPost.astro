@@ -5,17 +5,30 @@ interface Props {
   title: string;
   summary?: string;
   pubDate: Date;
+  updateDate?: Date;
+  chronoDate?: Date;
   author: string;
   image?: { url: string; alt: string };
   type: 'blog' | 'projects';
 }
 
-const { title, summary, pubDate, author, image } = Astro.props;
+const { title, summary, pubDate, updateDate, chronoDate, author, image } = Astro.props;
 
-const formattedDate = pubDate.toLocaleDateString('en-US', {
+const formattedPubDate = pubDate.toLocaleDateString('en-US', {
   year: 'numeric',
   month: 'long',
   day: 'numeric',
+});
+
+const formattedUpdateDate = updateDate?.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const formattedChronoDate = chronoDate?.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
 });
 ---
 
@@ -32,10 +45,36 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
       <h1 class="post-title">{title}</h1>
       {summary ? <h3 class="post-summary">{summary}</h3> : null}
       <div class="post-meta">
-        <time datetime={pubDate.toISOString()}>{formattedDate}</time>
-        <span class="meta-separator">•</span>
-        <span class="author">{author}</span>
+        <span>
+          <time datetime={pubDate.toISOString()}>{formattedPubDate}</time>
+          {
+            updateDate && (
+              <>
+                <span class="meta-separator">•</span> <span>updated</span>{' '}
+                <time datetime={updateDate.toISOString()}>{formattedUpdateDate}</time>
+              </>
+            )
+          }
+          <span class="meta-separator">•</span>
+          <span class="author">{author}</span>
+        </span>
       </div>
+      {
+        chronoDate && (
+          <>
+            <div class="chrono-date">
+              <span>This subject of this article occurred in</span>{' '}
+              <>
+                <time datetime={chronoDate.toISOString()}>{formattedChronoDate}</time>
+                <span>.</span>
+              </>{' '}
+              <a href="/blog/writing-project-articles">
+                Learn more about how I sort articles chronologically.
+              </a>
+            </div>
+          </>
+        )
+      }
     </header>
     <div class="prose">
       <slot />
@@ -44,6 +83,15 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
 </Layout>
 
 <style>
+  a {
+    color: #047857;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
   .markdown-post {
     max-width: 800px;
     margin: 0 auto;
@@ -80,7 +128,6 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
   .post-meta {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
     font-size: 0.95rem;
     color: #777;
     margin-bottom: 1rem;
@@ -91,7 +138,15 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
   }
 
   .author {
-    color: #555;
+    color: #777;
+  }
+
+  .chrono-date {
+    text-align: center;
+    border: 1px solid #047857;
+    border-radius: 0.75rem;
+    color: #777;
+    padding: 0.75rem 0;
   }
 
   .prose {
@@ -126,6 +181,10 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
 
   .prose :global(h3) {
     font-size: 1.5rem;
+  }
+
+  .post-summary {
+    font-weight: normal;
   }
 
   .prose :global(p) {
