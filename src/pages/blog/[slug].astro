@@ -22,6 +22,7 @@ const { Content } = await render(post);
   author={post.data.author}
   image={post.data.image}
   type="blog"
+  draft={post.data.draft}
 >
   <Content />
 </MarkdownPost>

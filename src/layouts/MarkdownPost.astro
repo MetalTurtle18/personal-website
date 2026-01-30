@@ -10,9 +10,10 @@ interface Props {
   author: string;
   image?: { url: string; alt: string };
   type: 'blog' | 'projects';
+  draft: boolean;
 }
 
-const { title, summary, pubDate, updateDate, chronoDate, author, image } = Astro.props;
+const { title, summary, pubDate, updateDate, chronoDate, author, image, draft } = Astro.props;
 
 const formattedPubDate = pubDate.toLocaleDateString('en-US', {
   year: 'numeric',
@@ -33,6 +34,7 @@ const formattedChronoDate = chronoDate?.toLocaleDateString('en-US', {
 ---
 
 <Layout title={title}>
+  {draft && <div class="notice">This article is a draft.</div>}
   <article class="markdown-post">
     {
       image && (
@@ -90,6 +92,20 @@ const formattedChronoDate = chronoDate?.toLocaleDateString('en-US', {
 
   a:hover {
     text-decoration: underline;
+  }
+
+  .notice {
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.6rem 1rem;
+    background: #f34c4c;
+    color: #ffffff;
+    font-size: 0.9rem;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 1px solid #280202;
+    z-index: 999;
   }
 
   .markdown-post {
