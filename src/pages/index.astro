@@ -12,12 +12,14 @@ const bio =
 // Get featured blog posts
 const featuredPosts = (await getCollection('blog'))
   .filter((post) => post.data.featured)
+  .filter((post) => (import.meta.env.PROD ? !post.data.draft : true))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3);
 
 // Get featured projects
 const featuredProjects = (await getCollection('projects'))
   .filter((project) => project.data.featured)
+  .filter((project) => (import.meta.env.PROD ? !project.data.draft : true))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3);
 

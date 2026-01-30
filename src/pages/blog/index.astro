@@ -4,7 +4,10 @@ import Layout from '../../layouts/Layout.astro';
 import ContentCard from '../../components/ContentCard.astro';
 
 // Get all blog posts and sort by date (newest first)
-const allPosts = await getCollection('blog');
+// In production, filter out drafts
+const allPosts = await getCollection('blog', ({ data }) => {
+  return import.meta.env.PROD ? !data.draft : true;
+});
 const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 

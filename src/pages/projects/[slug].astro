@@ -3,7 +3,10 @@ import { getCollection, render } from 'astro:content';
 import MarkdownPost from '../../layouts/MarkdownPost.astro';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('projects');
+  // In production, filter out drafts
+  const posts = await getCollection('projects', ({ data }) => {
+    return import.meta.env.PROD ? !data.draft : true;
+  });
   return posts.map((post) => ({
     params: { slug: post.id },
     props: { project: post },

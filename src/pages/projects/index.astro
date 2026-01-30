@@ -4,7 +4,10 @@ import Layout from '../../layouts/Layout.astro';
 import ContentCard from '../../components/ContentCard.astro';
 
 // Get all projects and sort by date (newest first)
-const allProjects = await getCollection('projects');
+// In production, filter out drafts
+const allProjects = await getCollection('projects', ({ data }) => {
+  return import.meta.env.PROD ? !data.draft : true;
+});
 const sortedProjects = allProjects.sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
