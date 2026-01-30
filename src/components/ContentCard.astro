@@ -7,9 +7,10 @@ interface Props {
   slug: string;
   image?: { url: string; alt: string };
   type: 'blog' | 'projects';
+  draft: boolean;
 }
 
-const { title, description, pubDate, chronoDate, slug, image, type } = Astro.props;
+const { title, description, pubDate, chronoDate, slug, image, type, draft } = Astro.props;
 
 const formattedDate = pubDate.toLocaleDateString('en-US', {
   year: 'numeric',
@@ -20,7 +21,7 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
 const contentUrl = `/${type}/${slug}`;
 ---
 
-<article class="content-card">
+<article class:list={['content-card', { 'content-card-draft': draft }]}>
   <a href={contentUrl} class="card-link">
     {
       image && (
@@ -30,6 +31,7 @@ const contentUrl = `/${type}/${slug}`;
       )
     }
     <div class="card-content">
+      {draft && <h4 class="draft-label">DRAFT</h4>}
       <h2 class="card-title">{title}</h2>
       <time class="card-date" datetime={pubDate.toISOString()}>{formattedDate}</time>
       <p class="card-description">{description}</p>
@@ -44,6 +46,15 @@ const contentUrl = `/${type}/${slug}`;
     border-radius: 8px;
     overflow: hidden;
     transition: all 0.2s ease;
+  }
+
+  .content-card-draft {
+    border-color: #f00;
+  }
+
+  .draft-label {
+    color: #f00;
+    margin: 0;
   }
 
   .content-card:hover {

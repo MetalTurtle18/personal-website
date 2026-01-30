@@ -12,6 +12,7 @@ const contentSchema = z.object({
   chronoDate: z.coerce.date().optional(), // The date that the content takes place (e.g., project completion date)
   author: z.string().default('Dorian Kolis'),
   featured: z.boolean().default(false),
+  draft: z.boolean().default(false),
   image: z
     .object({
       url: z.string(),
