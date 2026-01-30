@@ -1,7 +1,8 @@
 ---
 import Navigation from '../components/Navigation.astro';
+import headshot from '../assets/mugshot.jpg';
 
-const { title = 'Dorian Kolis' } = Astro.props;
+const { title = 'Dorian Kolis', url = Astro.url } = Astro.props;
 ---
 
 <!doctype html>
@@ -9,7 +10,22 @@ const { title = 'Dorian Kolis' } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--OpenGraph tags-->
+    <meta property="og:title" content={title} />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content={url} />
+    <meta property="og:image" content={headshot.src} />
+    <meta
+      property="og:description"
+      content="Dorian Kolis is an engineer studying at Dartmouth College with extensive experience in engineering, programming, and biology"
+    />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Dorian Kolis" />
+
+    <!--Favicon-->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!--Import JetBrains Mono font-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
