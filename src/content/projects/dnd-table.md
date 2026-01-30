@@ -1,5 +1,5 @@
 ---
-title: 'Template Project'
+title: 'D&D Gaming Table with Embedded Digital Map'
 pubDate: 2026-01-15
 updateDate: 2026-01-25
 chronoDate: 2025-01

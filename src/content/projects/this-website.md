@@ -1,5 +1,5 @@
 ---
-title: 'Template Project'
+title: 'Personal Website (this one!)'
 pubDate: 2026-01-15
 updateDate: 2026-01-25
 chronoDate: 2025-01
