@@ -62,7 +62,8 @@ const { title = 'Dorian Kolis', url = Astro.url } = Astro.props;
         </div>
         <div class="footer-attribution">
           <p>
-            © {new Date().getFullYear()} Dorian Kolis • <a
+            © 2026{new Date().getFullYear() !== 2026 ? '–' + new Date().getFullYear() : ''} Dorian Kolis
+            • <a
               href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
               target="_blank"
               rel="noopener">CC BY-NC-SA 4.0</a
@@ -110,7 +111,7 @@ const { title = 'Dorian Kolis', url = Astro.url } = Astro.props;
   }
 
   body {
-    margin: 0 0 280px;
+    margin: 0 0 260px;
     padding: 0;
     min-height: 100vh;
   }
