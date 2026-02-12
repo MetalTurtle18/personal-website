@@ -153,7 +153,7 @@ const { title = 'Dorian Kolis', url = Astro.url } = Astro.props;
   }
 
   .footer-content p {
-    margin: 0.5rem 0;
+    margin: 0.3rem 0;
   }
 
   .footer-content a {
@@ -172,7 +172,7 @@ const { title = 'Dorian Kolis', url = Astro.url } = Astro.props;
     padding: 0.3rem;
   }
 
-  .footer-links [data-icon]:not(.youtube) {
+  .footer-links [data-icon]:not([data-icon='youtube']) {
     /* Don't add the extra margin to YouTube since it is the last one */
     margin-right: 0.3rem;
   }
@@ -223,6 +223,7 @@ const { title = 'Dorian Kolis', url = Astro.url } = Astro.props;
     color: #6b7280;
     font-size: 0.7rem;
     padding: 0 0.3rem;
+    margin: 0.5rem 0;
   }
 
   @media (max-width: 350px) {
