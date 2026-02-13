@@ -16,10 +16,15 @@ image:
 This is a template project. I am not including a title in the Markdown because the front matter will be rendered as a title.
 
 # h1 Heading
+
 ## h2 Heading
+
 ### h3 Heading
+
 #### h4 Heading
+
 ##### h5 Heading
+
 ###### h6 Heading
 
 **This is bold text**
@@ -31,11 +36,11 @@ _This is italic text_
 1. An ordered list starts here
 2. Here's another item
 
-* An unordered list starts here
-* Here's another item
+- An unordered list starts here
+- Here's another item
 
-- [ ] This is a task list item
-- [x] This is a completed task
+* [ ] This is a task list item
+* [x] This is a completed task
 
 [here's a link](https://www.google.com)
 
@@ -50,7 +55,7 @@ print("Hello World!")
 ```
 
 > block quote here
-> 
+>
 > this is another line in the block quote
 
 ---

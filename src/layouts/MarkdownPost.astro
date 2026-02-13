@@ -34,7 +34,7 @@ const formattedChronoDate = chronoDate?.toLocaleDateString('en-US', {
 ---
 
 <Layout title={title}>
-  {draft && <div class="notice">This article is a draft.</div>}
+  {draft && <div class="draft-notice">This article is a draft.</div>}
   <article class="markdown-post">
     {
       image && (
@@ -94,7 +94,7 @@ const formattedChronoDate = chronoDate?.toLocaleDateString('en-US', {
     text-decoration: underline;
   }
 
-  .notice {
+  .draft-notice {
     top: 0;
     left: 0;
     width: 100%;
@@ -261,6 +261,28 @@ const formattedChronoDate = chronoDate?.toLocaleDateString('en-US', {
     height: auto;
     border-radius: 6px;
     margin: 1.5rem 0;
+  }
+
+  /* Anchor link styles for heading permalinks */
+  .prose :global(.anchor) {
+    position: relative;
+  }
+
+  .prose :global(.anchor-link) {
+    position: absolute;
+    left: -1.7rem;
+    padding-right: 0.5rem;
+    opacity: 0.1;
+    transition: opacity 0.2s ease;
+  }
+
+  .prose :global(.anchor:hover .anchor-link) {
+    opacity: 1;
+  }
+
+  .prose :global(.heading-anchor-icon) {
+    vertical-align: baseline;
+    display: inline-block;
   }
 
   @media (max-width: 768px) {
