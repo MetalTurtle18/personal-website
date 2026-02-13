@@ -13,9 +13,12 @@
   "dependencies": {
     "@eslint/js": "^9.37.0",
     "astro": "^5.15.9",
-    "astro-icon": "^1.1.5"
+    "astro-icon": "^1.1.5",
+    "rehype-autolink-headings": "^7.1.0",
+    "rehype-slug": "^6.0.0"
   },
   "devDependencies": {
+    "@iconify-json/mdi": "^1.2.3",
     "@typescript-eslint/eslint-plugin": "^8.46.0",
     "@typescript-eslint/parser": "^8.46.0",
     "eslint": "^9.37.0",
