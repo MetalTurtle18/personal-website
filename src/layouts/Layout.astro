@@ -166,11 +166,20 @@ const { title = 'Dorian Kolis', url = Astro.url } = Astro.props;
     text-decoration: underline;
   }
 
+  .footer-content a:has([data-icon]) {
+    text-decoration: none;
+  }
+
   .footer-links [data-icon] {
     width: 3rem;
     height: 3rem;
     border-radius: 0.5rem;
     padding: 0.3rem;
+    transition: all 0.2s ease;
+  }
+
+  .footer-links [data-icon]:hover {
+    box-shadow: 0.1rem 0.1rem 0.1rem black;
   }
 
   .footer-links [data-icon]:not([data-icon='youtube']) {
