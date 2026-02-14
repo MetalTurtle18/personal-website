@@ -5,9 +5,12 @@ import icon from 'astro-icon';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
+import sitemap from '@astrojs/sitemap';
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [icon()],
+  site: 'https://dekolis.com',
+  integrations: [icon(), sitemap()],
   markdown: {
     rehypePlugins: [
       rehypeSlug,

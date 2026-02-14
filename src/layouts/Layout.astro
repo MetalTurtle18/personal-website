@@ -26,6 +26,9 @@ const { title = 'Dorian Kolis', url = Astro.url } = Astro.props;
     <!--Favicon-->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
+    <!--Sitemap for search engines-->
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
     <!--Import JetBrains Mono font-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -33,6 +36,7 @@ const { title = 'Dorian Kolis', url = Astro.url } = Astro.props;
       href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
       rel="stylesheet"
     />
+
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
