@@ -26,7 +26,7 @@ const featuredProjects = (await getCollection('projects'))
 const hasFeaturedContent = featuredPosts.length > 0 || featuredProjects.length > 0;
 ---
 
-<Layout>
+<Layout title="Home">
   <div class="profile">
     <img src={headshot.src} alt="Headshot that looks like a mugshot" class="headshot" />
     <h1>{name}</h1>
