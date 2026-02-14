@@ -25,6 +25,7 @@ export default [
       ...ts.configs.recommended.rules,
       'no-unused-vars': 'warn',
       'no-console': 'off',
+      'no-undef': 'off',
     },
   },
 
