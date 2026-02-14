@@ -2,45 +2,54 @@
 import Navigation from '../components/Navigation.astro';
 import headshot from '../assets/mugshot.jpg';
 import { Icon } from 'astro-icon/components';
+import { SEO } from 'astro-seo';
 
-const { title = 'Dorian Kolis', url = Astro.url } = Astro.props;
+const {
+  title = 'dekolis.com',
+  description = 'Dorian Kolis is an engineer studying at Dartmouth College with extensive experience in engineering, programming, and biology',
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!--OpenGraph tags-->
-    <meta property="og:title" content={title} />
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content={url} />
-    <meta property="og:image" content={headshot.src} />
-    <meta
-      property="og:description"
-      content="Dorian Kolis is an engineer studying at Dartmouth College with extensive experience in engineering, programming, and biology"
-    />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:site_name" content="Dorian Kolis" />
-
-    <!--Favicon-->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-    <!--SEO-->
-    <link rel="sitemap" href="/sitemap-index.xml" />
-    <!--TODO-->
-    <meta name="robots" content="noindex" />
+    <meta name="generator" content={Astro.generator} />
+    <meta charset="UTF-8" />
 
     <!--Import JetBrains Mono font-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
     />
 
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <title>{`${title} — Dorian Kolis`}</title>
+
+    <!--TODO: enable indexing-->
+    <SEO
+      noindex={true}
+      description={description}
+      openGraph={{
+        basic: {
+          title: title,
+          type: 'article',
+          image: headshot.src,
+        },
+        optional: {
+          siteName: 'Dorian Kolis',
+          description: description,
+        },
+      }}
+      extend={{
+        link: [
+          { rel: 'sitemap', href: '/sitemap-index.xml' },
+          { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        ],
+        meta: [{ name: 'theme-color', content: '#047857' }],
+      }}
+    />
   </head>
   <body>
     <!--TODO: REMOVE NOTICE-->
