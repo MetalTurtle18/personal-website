@@ -4,6 +4,7 @@ import { defineConfig } from 'astro/config';
 import icon from 'astro-icon';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import remarkSmartyPants from 'remark-smartypants';
 
 import sitemap from '@astrojs/sitemap';
 
@@ -12,6 +13,17 @@ export default defineConfig({
   site: 'https://dekolis.com',
   integrations: [icon(), sitemap()],
   markdown: {
+    remarkPlugins: [
+      // @ts-ignore - Plugin types are not fully compatible with Astro's config types
+      [
+        remarkSmartyPants,
+        {
+          dashes: 'oldschool', // --- to em dash, -- to en dash
+          ellipses: true, // ... to ellipsis
+          quotes: false, // Keep straight quotes (no curly quotes)
+        },
+      ],
+    ],
     rehypePlugins: [
       rehypeSlug,
       [
