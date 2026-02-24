@@ -175,6 +175,17 @@ const formattedChronoDate = chronoDate?.toLocaleDateString('en-US', {
     color: #333;
   }
 
+  /* Drop cap styling for first paragraph */
+  .prose :global(> p:first-of-type::first-letter) {
+    float: left;
+    font-size: 3.45em;
+    line-height: 0.85;
+    margin-right: 0.1em;
+    margin-top: 0.1em;
+    color: #047857;
+    font-weight: 700;
+  }
+
   .prose :global(h1),
   .prose :global(h2),
   .prose :global(h3),
