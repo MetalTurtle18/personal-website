@@ -1,5 +1,6 @@
 ---
 import Layout from './Layout.astro';
+import { Image } from 'astro:assets';
 
 interface Props {
   title: string;
@@ -39,7 +40,7 @@ const formattedChronoDate = chronoDate?.toLocaleDateString('en-US', {
     {
       image && (
         <div class="hero-image">
-          <img src={image.url} alt={image.alt} />
+          <Image src={image.url} alt={image.alt} inferSize={true} />
         </div>
       )
     }

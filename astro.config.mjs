@@ -11,6 +11,11 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://dekolis.com',
+  image: {
+    domains: ['res.cloudinary.com'],
+    layout: 'constrained',
+    responsiveStyles: true,
+  },
   integrations: [icon(), sitemap()],
   markdown: {
     remarkPlugins: [
