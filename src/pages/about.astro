@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
 const aboutMe = 'This is som text about me';
 ---
 
@@ -7,6 +9,8 @@ const aboutMe = 'This is som text about me';
   <h1>About</h1>
 
   <h2>{aboutMe}</h2>
+
+  <Image src="https://res.cloudinary.com/dd1smqo6f/image/upload/v1773049178/R1-00502-0023_sk51ym.jpg" alt="a test flower" inferSize={true} />
 
   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quaerat.</p>
 </Layout>
