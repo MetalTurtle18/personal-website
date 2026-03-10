@@ -6,7 +6,7 @@ import ContentCard from '../../components/ContentCard.astro';
 // Get all projects and sort by date (newest first)
 // In production, filter out drafts
 const allProjects = await getCollection('projects', ({ data }) => {
-  return import.meta.env.PROD ? !data.draft : true;
+  return process.env.PREVIEW === 'true'  ? true : !data.draft;
 });
 const sortedProjects = allProjects.sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
