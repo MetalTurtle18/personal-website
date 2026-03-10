@@ -59,7 +59,7 @@ const preview = import.meta.env.DEV || process.env.PREVIEW === 'true';
     />
   </head>
   <body>
-    { preview && <div class="preview-notice">This is a preview version of the site.</div> }
+    { preview && <div class="preview-notice">This is a preview version of the site. <a href="https://dekolis.com">Click here to go the main site.</a></div> }
     <Navigation />
     <slot />
     <footer class="footer">
@@ -100,7 +100,13 @@ const preview = import.meta.env.DEV || process.env.PREVIEW === 'true';
             >
               View Source
               <Icon name="github" size="16px" />
-            </a>
+            </a> •
+            <a
+              href="https://preview.dekolis.com"
+              class="view-preview-site"
+            >
+              View Preview Site
+            </a> 
           </p>
         </div>
         <div class="footer-ai-notice" title="Sorry, I still think I am a better writer.">
@@ -150,6 +156,14 @@ const preview = import.meta.env.DEV || process.env.PREVIEW === 'true';
     z-index: 999;
   }
 
+  .preview-notice a {
+    text-decoration: none;
+  }
+
+  .preview-notice a:hover {
+    text-decoration: underline;
+  }
+
   .footer {
     position: absolute;
     overflow: hidden;
@@ -186,7 +200,7 @@ const preview = import.meta.env.DEV || process.env.PREVIEW === 'true';
     text-decoration: underline;
   }
 
-  .footer-content a:has([data-icon]) {
+  .footer-content a > [data-icon] {
     text-decoration: none;
   }
 
@@ -240,6 +254,12 @@ const preview = import.meta.env.DEV || process.env.PREVIEW === 'true';
 
   .github-view-source [data-icon='github'] {
     vertical-align: text-bottom;
+  }
+
+  .view-preview-site {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
   }
 
   .footer-ai-notice {
