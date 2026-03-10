@@ -9,7 +9,7 @@ const {
   description = 'Dorian Kolis is an engineer studying at Dartmouth College with extensive experience in engineering, programming, and biology',
 } = Astro.props;
 
-const preview = process.env.PREVIEW === 'true';
+const preview = import.meta.env.DEV || process.env.PREVIEW === 'true';
 ---
 
 <!doctype html>
