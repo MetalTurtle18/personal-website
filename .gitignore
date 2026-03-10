@@ -28,3 +28,5 @@ pnpm-debug.log*
 
 # Zed Editor personal settings
 .zed/
+
+*.swp
