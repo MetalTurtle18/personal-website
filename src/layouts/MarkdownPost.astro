@@ -320,3 +320,27 @@ const formattedChronoDate = chronoDate?.toLocaleDateString('en-US', {
     }
   }
 </style>
+
+<style is:global>
+  article iframe[src*="youtube.com"], 
+  article iframe[src*="youtu.be"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    aspect-ratio: 16 / 9 !important;
+    height: auto !important; 
+    
+    /* The Fix for Corners */
+    border-radius: 12px !important;
+    border: none !important;
+    overflow: hidden !important;
+
+    transition: all 0.2s ease;
+
+    margin: 2rem 0;
+  }
+
+  article iframe[src*="youtube.com"]:hover, 
+  article iframe[src*="youtu.be"]:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+</style>

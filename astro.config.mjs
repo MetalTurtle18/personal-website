@@ -5,6 +5,8 @@ import icon from 'astro-icon';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import remarkSmartyPants from 'remark-smartypants';
+import remarkEmbedder from '@remark-embedder/core';
+import oembedTransformer from '@remark-embedder/transformer-oembed';
 
 import sitemap from '@astrojs/sitemap';
 
@@ -12,7 +14,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://dekolis.com',
   image: {
-    domains: ['res.cloudinary.com'],
+    domains: ['res.cloudinary.com', 'docs.astro.build'],
     layout: 'constrained',
     responsiveStyles: true,
   },
@@ -28,6 +30,14 @@ export default defineConfig({
           quotes: false, // Keep straight quotes (no curly quotes)
         },
       ],
+      [
+        (remarkEmbedder.default || remarkEmbedder),
+        {
+          transformers: [
+            (oembedTransformer.default || oembedTransformer)
+          ],
+        },
+      ]
     ],
     rehypePlugins: [
       rehypeSlug,
