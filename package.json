@@ -13,6 +13,8 @@
   "dependencies": {
     "@astrojs/sitemap": "^3.7.0",
     "@eslint/js": "^9.37.0",
+    "@remark-embedder/core": "^3.0.3",
+    "@remark-embedder/transformer-oembed": "^5.0.1",
     "astro": "^5.15.9",
     "astro-icon": "^1.1.5",
     "astro-seo": "^1.1.0",
@@ -21,6 +23,7 @@
     "remark-smartypants": "^3.0.2"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.7",
     "@iconify-json/mdi": "^1.2.3",
     "@typescript-eslint/eslint-plugin": "^8.46.0",
     "@typescript-eslint/parser": "^8.46.0",
@@ -30,5 +33,9 @@
     "eslint-plugin-svelte": "^3.12.4",
     "prettier": "3.6.2",
     "prettier-plugin-astro": "0.14.1"
+  },
+  "overrides": {
+    "lodash": "^4.17.23",
+    "yauzl": "^3.2.1"
   }
 }
