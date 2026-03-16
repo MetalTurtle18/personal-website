@@ -11,10 +11,8 @@ const {
 
 const buildDate = new Date();
 const formattedBuildDate = buildDate.toISOString();
-const commitHash = 
-  process.env.COMMIT_REF?.slice(0, 7) || 
-  process.env.GITHUB_SHA?.slice(0, 7) || 
-  'indev';
+const commitHash =
+  process.env.COMMIT_REF?.slice(0, 7) || process.env.GITHUB_SHA?.slice(0, 7) || 'indev';
 const preview = import.meta.env.DEV || process.env.PREVIEW === 'true';
 ---
 
@@ -65,46 +63,88 @@ const preview = import.meta.env.DEV || process.env.PREVIEW === 'true';
     />
   </head>
   <body>
-    { preview && <div class="preview-notice">This is a preview version of the site. <a href="https://dekolis.com">Click here to go the main site.</a></div> }
+    {
+      preview && (
+        <div class="preview-notice">
+          This is a preview version of the site.{' '}
+          <a href="https://dekolis.com">Click here to go the main site.</a>
+        </div>
+      )
+    }
     <Navigation />
     <slot />
     <footer class="footer">
       <div class="footer-content">
         <div class="footer-links">
-          <a href="https://github.com/MetalTurtle18" target="_blank" rel="noopener">
-            <Icon name="github" size="3rem" />
+          <a
+            aria-labelledby="github-icon"
+            href="https://github.com/MetalTurtle18"
+            target="_blank"
+            rel="noopener"
+          >
+            <Icon id="github-icon" name="github" size="3rem" />
           </a>
-          <a href="https://www.linkedin.com/in/dorian-kolis" target="_blank" rel="noopener">
-            <Icon name="linkedin" size="3rem" />
+          <a
+            aria-labelledby="linkedin-icon"
+            href="https://www.linkedin.com/in/dorian-kolis"
+            target="_blank"
+            rel="noopener"
+          >
+            <Icon id="linkedin-icon" name="linkedin" size="3rem" />
           </a>
-          <a href="https://orcid.org/0009-0004-5363-3730" target="_blank" rel="noopener">
-            <Icon name="orcid" size="3rem" />
+          <a
+            aria-labelledby="orcid-icon"
+            href="https://orcid.org/0009-0004-5363-3730"
+            target="_blank"
+            rel="noopener"
+          >
+            <Icon id="orcid-icon" name="orcid" size="3rem" />
           </a>
-          <a href="https://www.printables.com/@MetalTurtle" target="_blank" rel="noopener">
-            <Icon name="printables" size="3rem" />
+          <a
+            aria-labelledby="printables-icon"
+            href="https://www.printables.com/@MetalTurtle"
+            target="_blank"
+            rel="noopener"
+          >
+            <Icon id="printables-icon" name="printables" size="3rem" />
           </a>
-          <a href="https://www.youtube.com/@MetalTurtle18" target="_blank" rel="noopener">
-            <Icon name="youtube" size="3rem" />
+          <a
+            aria-labelledby="youtube-icon"
+            href="https://www.youtube.com/@MetalTurtle18"
+            target="_blank"
+            rel="noopener"
+          >
+            <Icon id="youtube-icon" name="youtube" size="3rem" />
           </a>
         </div>
         <div class="footer-detail">
           <div class="footer-attribution">
-            <span>&copy; 2026{new Date().getFullYear() !== 2026 ? '–' + new Date().getFullYear() : ''} Dorian Kolis</span>
+            <span
+              >&copy; 2026{new Date().getFullYear() !== 2026 ? '–' + new Date().getFullYear() : ''} Dorian
+              Kolis</span
+            >
             <span class="separator">&bull;</span>
             <span>All Rights Reserved</span>
-            
           </div>
           <div class="footer-build-info">
-            <span>Built with <a href="https://astro.build" target="_blank" rel="noopener">Astro</a></span>
+            <span
+              >Built with <a href="https://astro.build" target="_blank" rel="noopener">Astro</a
+              ></span
+            >
             <span class="separator">&bull;</span>
             <span>Deployed {formattedBuildDate}</span>
             <span class="separator">&bull;</span>
             <code class="commit-tag">{commitHash}</code>
           </div>
           <div class="footer-dev-links">
-            <a href="https://github.com/MetalTurtle18/personal-website" target="_blank" rel="noopener">View Source</a>
+            <a
+              href="https://github.com/MetalTurtle18/personal-website"
+              target="_blank"
+              rel="noopener">View Source</a
+            >
             <span class="separator">&bull;</span>
-            <a href="https://preview.dekolis.com">View Preview Site</a>
+            {!preview && <a href="https://preview.dekolis.com">View Preview Site</a>}
+            {preview && <a href="https://dekolis.com">View Public (non-preview) Site</a>}
           </div>
         </div>
         <div class="footer-ai-notice" title="Sorry, I still think I am a better writer.">
@@ -254,12 +294,6 @@ const preview = import.meta.env.DEV || process.env.PREVIEW === 'true';
     padding: 0.1rem 0.3rem;
     border-radius: 4px;
     font-family: 'JetBrains Mono', 'Courier New', monospace;
-  }
-
-  .view-preview-site {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
   }
 
   .footer-ai-notice {

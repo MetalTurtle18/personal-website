@@ -31,13 +31,11 @@ export default defineConfig({
         },
       ],
       [
-        (remarkEmbedder.default || remarkEmbedder),
+        remarkEmbedder.default || remarkEmbedder,
         {
-          transformers: [
-            (oembedTransformer.default || oembedTransformer)
-          ],
+          transformers: [oembedTransformer.default || oembedTransformer],
         },
-      ]
+      ],
     ],
     rehypePlugins: [
       rehypeSlug,
