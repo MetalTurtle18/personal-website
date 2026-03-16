@@ -2,7 +2,7 @@
 title: 'Smart Window Blinds'
 pubDate: 2026-01-15
 updateDate: 2026-01-25
-chronoDate: 2025-01
+chronoDate: 2024-12
 description: 'This is the short description of a project that shows on the content card.'
 summary: "This is a slightly longer description that will show at the top of the article. I will write several sentences here so it can showcase the layout that I will make for the summary section of an article. I am going to keep writing now to pad this out a bit more and take up a few more lines of the page. I think writing this one more sentence will probably be enough so let's just keep going on a little bit longer and then it'll be good to stop and see what this looks like on the page."
 author: 'Some Computer'
