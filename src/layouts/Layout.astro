@@ -9,6 +9,12 @@ const {
   description = 'Dorian Kolis is an engineer studying at Dartmouth College with extensive experience in engineering, programming, and biology',
 } = Astro.props;
 
+const buildDate = new Date();
+const formattedBuildDate = buildDate.toISOString();
+const commitHash = 
+  process.env.COMMIT_REF?.slice(0, 7) || 
+  process.env.GITHUB_SHA?.slice(0, 7) || 
+  'indev';
 const preview = import.meta.env.DEV || process.env.PREVIEW === 'true';
 ---
 
@@ -81,33 +87,25 @@ const preview = import.meta.env.DEV || process.env.PREVIEW === 'true';
             <Icon name="youtube" size="3rem" />
           </a>
         </div>
-        <div class="footer-attribution">
-          <p>
-            © 2026{new Date().getFullYear() !== 2026 ? '–' + new Date().getFullYear() : ''} Dorian Kolis
-            • <a
-              href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
-              target="_blank"
-              rel="noopener">CC BY-NC-SA 4.0</a
-            >
-          </p>
-          <p>
-            Built with <a href="https://astro.build" target="_blank" rel="noopener">Astro</a> •
-            <a
-              href="https://github.com/MetalTurtle18/personal-website"
-              target="_blank"
-              rel="noopener"
-              class="github-view-source"
-            >
-              View Source
-              <Icon name="github" size="16px" />
-            </a> •
-            <a
-              href="https://preview.dekolis.com"
-              class="view-preview-site"
-            >
-              View Preview Site
-            </a> 
-          </p>
+        <div class="footer-detail">
+          <div class="footer-attribution">
+            <span>&copy; 2026{new Date().getFullYear() !== 2026 ? '–' + new Date().getFullYear() : ''} Dorian Kolis</span>
+            <span class="separator">&bull;</span>
+            <span>All Rights Reserved</span>
+            
+          </div>
+          <div class="footer-build-info">
+            <span>Built with <a href="https://astro.build" target="_blank" rel="noopener">Astro</a></span>
+            <span class="separator">&bull;</span>
+            <span>Deployed {formattedBuildDate}</span>
+            <span class="separator">&bull;</span>
+            <code class="commit-tag">{commitHash}</code>
+          </div>
+          <div class="footer-dev-links">
+            <a href="https://github.com/MetalTurtle18/personal-website" target="_blank" rel="noopener">View Source</a>
+            <span class="separator">&bull;</span>
+            <a href="https://preview.dekolis.com">View Preview Site</a>
+          </div>
         </div>
         <div class="footer-ai-notice" title="Sorry, I still think I am a better writer.">
           <p>Unless otherwise indicated, no text content on this website is written with AI.</p>
@@ -200,8 +198,10 @@ const preview = import.meta.env.DEV || process.env.PREVIEW === 'true';
     text-decoration: underline;
   }
 
-  .footer-content a > [data-icon] {
-    text-decoration: none;
+  .footer-links {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 10px;
   }
 
   .footer-links a:hover {
@@ -218,11 +218,6 @@ const preview = import.meta.env.DEV || process.env.PREVIEW === 'true';
 
   .footer-links [data-icon]:hover {
     box-shadow: 0.1rem 0.1rem 0.1rem black;
-  }
-
-  .footer-links [data-icon]:not([data-icon='youtube']) {
-    /* Don't add the extra margin to YouTube since it is the last one */
-    margin-right: 0.3rem;
   }
 
   .footer-links [data-icon='github'] {
@@ -250,14 +245,15 @@ const preview = import.meta.env.DEV || process.env.PREVIEW === 'true';
     background: #ff0000;
   }
 
-  .github-view-source {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
+  .separator {
+    color: #d1d5db;
   }
 
-  .github-view-source [data-icon='github'] {
-    vertical-align: text-bottom;
+  .commit-tag {
+    background: #f3f4f6;
+    padding: 0.1rem 0.3rem;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
   }
 
   .view-preview-site {
@@ -281,6 +277,10 @@ const preview = import.meta.env.DEV || process.env.PREVIEW === 'true';
   }
 
   @media (max-width: 350px) {
+    .footer-links {
+      gap: 5px;
+    }
+
     .footer-links [data-icon] {
       width: 2.4rem;
       height: 2.4rem;
