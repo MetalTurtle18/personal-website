@@ -9,7 +9,9 @@ const allProjects = await getCollection('projects', ({ data }) => {
   return process.env.PREVIEW === 'true' || import.meta.env.DEV ? true : !data.draft;
 });
 const sortedProjects = allProjects.sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  (a, b) =>
+    (b.data.chronoDate?.valueOf() ?? b.data.pubDate.valueOf()) -
+    (a.data.chronoDate?.valueOf() ?? a.data.pubDate.valueOf())
 );
 ---
 
