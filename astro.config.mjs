@@ -1,13 +1,11 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, envField } from 'astro/config';
 
 import icon from 'astro-icon';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import remarkSmartyPants from 'remark-smartypants';
-import remarkEmbedder from '@remark-embedder/core';
 import remarkToc from 'remark-toc';
-import oembedTransformer from '@remark-embedder/transformer-oembed';
+import { localSmartyPants, localEmbedder } from './src/lib/remark-plugins.mjs';
 
 import sitemap from '@astrojs/sitemap';
 
@@ -19,26 +17,32 @@ export default defineConfig({
     layout: 'constrained',
     responsiveStyles: true,
   },
+  env: {
+    schema: {
+      PREVIEW: envField.boolean({
+        context: 'client',
+        access: 'public',
+        optional: true,
+        default: false,
+      }),
+      COMMIT_REF: envField.string({
+        context: 'client',
+        access: 'public',
+        optional: true,
+        default: '',
+      }),
+      GITHUB_SHA: envField.string({
+        context: 'client',
+        access: 'public',
+        optional: true,
+        default: '',
+      }),
+    },
+  },
   integrations: [icon(), sitemap()],
   markdown: {
-    remarkPlugins: [
-      // @ts-ignore - Plugin types are not fully compatible with Astro's config types
-      [
-        remarkSmartyPants,
-        {
-          dashes: 'oldschool', // --- to em dash, -- to en dash
-          ellipses: true, // ... to ellipsis
-          quotes: false, // Keep straight quotes (no curly quotes)
-        },
-      ],
-      [
-        remarkEmbedder.default || remarkEmbedder,
-        {
-          transformers: [oembedTransformer.default || oembedTransformer],
-        },
-      ],
-      [remarkToc, { heading: 'Contents' }],
-    ],
+    smartypants: true /* TODO: 1) this should be true default 2) behavior*/,
+    remarkPlugins: [localSmartyPants, localEmbedder, [remarkToc, { heading: 'Contents' }]],
     rehypePlugins: [
       rehypeSlug,
       [

@@ -3,6 +3,7 @@ import Navigation from '../components/Navigation.astro';
 import headshot from '../assets/mugshot.jpg';
 import { Icon } from 'astro-icon/components';
 import { SEO } from 'astro-seo';
+import { PREVIEW, COMMIT_REF, GITHUB_SHA } from 'astro:env/client';
 
 const {
   title = 'dekolis.com',
@@ -11,9 +12,7 @@ const {
 
 const buildDate = new Date();
 const formattedBuildDate = buildDate.toISOString();
-const commitHash =
-  process.env.COMMIT_REF?.slice(0, 7) || process.env.GITHUB_SHA?.slice(0, 7) || 'indev';
-const preview = import.meta.env.DEV || process.env.PREVIEW === 'true';
+const commitHash = COMMIT_REF?.slice(0, 7) || GITHUB_SHA?.slice(0, 7) || 'indev';
 ---
 
 <!doctype html>
@@ -69,7 +68,7 @@ const preview = import.meta.env.DEV || process.env.PREVIEW === 'true';
   </head>
   <body>
     {
-      preview && (
+      PREVIEW && (
         <div class="preview-notice">
           This is a preview version of the site.{' '}
           <a href="https://dekolis.com">Click here to go the main site.</a>
@@ -148,8 +147,8 @@ const preview = import.meta.env.DEV || process.env.PREVIEW === 'true';
               rel="noopener">View Source</a
             >
             <span class="separator">&bull;</span>
-            {!preview && <a href="https://preview.dekolis.com">View Preview Site</a>}
-            {preview && <a href="https://dekolis.com">View Public (non-preview) Site</a>}
+            {!PREVIEW && <a href="https://preview.dekolis.com">View Preview Site</a>}
+            {PREVIEW && <a href="https://dekolis.com">View Public (non-preview) Site</a>}
           </div>
         </div>
         <div class="footer-ai-notice" title="Sorry, I still think I am a better writer.">

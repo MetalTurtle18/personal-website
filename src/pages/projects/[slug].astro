@@ -1,12 +1,11 @@
 ---
 import { getCollection, render } from 'astro:content';
+import { PREVIEW } from 'astro:env/client';
 import MarkdownPost from '../../layouts/MarkdownPost.astro';
 
 export async function getStaticPaths() {
   // In production, filter out drafts
-  const posts = await getCollection('projects', ({ data }) => {
-    return process.env.PREVIEW === 'true' || import.meta.env.DEV ? true : !data.draft;
-  });
+  const posts = await getCollection('projects', ({ data }) => PREVIEW || !data.draft);
   return posts.map((post) => ({
     params: { slug: post.id },
     props: { project: post },

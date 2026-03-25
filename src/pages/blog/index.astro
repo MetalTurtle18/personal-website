@@ -1,13 +1,12 @@
 ---
 import { getCollection } from 'astro:content';
+import { PREVIEW } from 'astro:env/client';
 import Layout from '../../layouts/Layout.astro';
 import ContentCard from '../../components/ContentCard.astro';
 
 // Get all blog posts and sort by date (newest first)
 // In production, filter out drafts
-const allPosts = await getCollection('blog', ({ data }) => {
-  return process.env.PREVIEW === 'true' || import.meta.env.DEV ? true : !data.draft;
-});
+const allPosts = await getCollection('blog', ({ data }) => PREVIEW || !data.draft);
 const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
