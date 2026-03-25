@@ -19,7 +19,7 @@ const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pu
 
     <section class="posts-grid">
       {
-        sortedPosts.map((post) => (
+        sortedPosts.map((post, index) => (
           <ContentCard
             title={post.data.title}
             description={post.data.description}
@@ -29,6 +29,7 @@ const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pu
             image={post.data.image}
             type="blog"
             draft={post.data.draft}
+            eagerLoading={index < 6}
           />
         ))
       }

@@ -10,9 +10,11 @@ interface Props {
   image?: { url: string; alt: string };
   type: 'blog' | 'projects';
   draft: boolean;
+  eagerLoading?: boolean;
 }
 
-const { title, description, pubDate, chronoDate, slug, image, type, draft } = Astro.props;
+const { title, description, pubDate, chronoDate, slug, image, type, draft, eagerLoading } =
+  Astro.props;
 
 const formattedDate = pubDate.toLocaleDateString('en-US', {
   year: 'numeric',
@@ -28,7 +30,13 @@ const contentUrl = `/${type}/${slug}`;
     {
       image && (
         <div class="card-image">
-          <Image src={image.url} alt={image.alt} inferSize={true} />
+          <Image
+            src={image.url}
+            alt={image.alt}
+            inferSize={true}
+            loading={eagerLoading ? 'eager' : 'lazy'}
+            fetchpriority={eagerLoading ? 'high' : 'auto'}
+          />
         </div>
       )
     }

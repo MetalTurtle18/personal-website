@@ -47,7 +47,7 @@ const hasFeaturedContent = featuredPosts.length > 0 || featuredProjects.length >
               </a>
             </div>
             <div class="featured-grid">
-              {featuredProjects.map((project) => (
+              {featuredProjects.map((project, index) => (
                 <ContentCard
                   title={project.data.title}
                   description={project.data.description}
@@ -57,6 +57,7 @@ const hasFeaturedContent = featuredPosts.length > 0 || featuredProjects.length >
                   image={project.data.image}
                   type="projects"
                   draft={project.data.draft}
+                  eagerLoading={index < 4}
                 />
               ))}
             </div>
@@ -72,7 +73,7 @@ const hasFeaturedContent = featuredPosts.length > 0 || featuredProjects.length >
               </a>
             </div>
             <div class="featured-grid">
-              {featuredPosts.map((post) => (
+              {featuredPosts.map((post, index) => (
                 <ContentCard
                   title={post.data.title}
                   description={post.data.description}
@@ -82,6 +83,10 @@ const hasFeaturedContent = featuredPosts.length > 0 || featuredProjects.length >
                   image={post.data.image}
                   type="blog"
                   draft={post.data.draft}
+                  eagerLoading={
+                    /*If there are featured projects, then this line won't be above the fold anyway */
+                    featuredProjects.length == 0 && index < 4
+                  }
                 />
               ))}
             </div>
