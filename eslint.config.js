@@ -49,5 +49,5 @@ export default [
   // Disable formatting conflicts
   prettier,
   // Global ignores
-  globalIgnores(['.astro/*', 'dist/*']),
+  globalIgnores(['.astro/*', 'dist/*', 'studio/*']),
 ];

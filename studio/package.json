@@ -1,0 +1,16 @@
+{
+  "name": "dekolis-studio",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "sanity dev",
+    "build": "sanity build",
+    "deploy": "sanity deploy"
+  },
+  "dependencies": {
+    "react": "^19",
+    "react-dom": "^19",
+    "sanity": "^5.18",
+    "styled-components": "^6.3.12"
+  }
+}

@@ -1,11 +1,14 @@
 # build output
 dist/
+studio/.sanity/runtime/
 
 # generated types
 .astro/
 
 # dependencies
 node_modules/
+studio/node_modules/
+studio/dist/
 
 # logs
 npm-debug.log*

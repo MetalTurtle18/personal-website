@@ -6,6 +6,7 @@ import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import remarkToc from 'remark-toc';
 import { localSmartyPants, localEmbedder } from './src/lib/remark-plugins.mjs';
+import sanity from '@sanity/astro';
 
 import sitemap from '@astrojs/sitemap';
 
@@ -13,7 +14,8 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://dekolis.com',
   image: {
-    domains: ['res.cloudinary.com', 'docs.astro.build'],
+    // res.cloudinary.com can be removed once existing Cloudinary images are migrated to Sanity
+    domains: ['cdn.sanity.io', 'docs.astro.build', 'res.cloudinary.com'],
     layout: 'constrained',
     responsiveStyles: true,
   },
@@ -39,7 +41,16 @@ export default defineConfig({
       }),
     },
   },
-  integrations: [icon(), sitemap()],
+  integrations: [
+    icon(),
+    sitemap(),
+    sanity({
+      projectId: 'kigxwafh',
+      dataset: 'production',
+      // useCdn: false ensures fresh data at build time
+      useCdn: false,
+    }),
+  ],
   markdown: {
     smartypants: true /* TODO: 1) this should be true default 2) behavior*/,
     remarkPlugins: [localSmartyPants, localEmbedder, [remarkToc, { heading: 'Contents' }]],
