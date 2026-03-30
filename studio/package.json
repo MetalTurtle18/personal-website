@@ -11,6 +11,7 @@
     "react": "^19",
     "react-dom": "^19",
     "sanity": "^5.18",
+    "sanity-plugin-media": "^4.1.1",
     "styled-components": "^6.3.12"
   }
 }

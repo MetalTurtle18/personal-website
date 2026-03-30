@@ -22,7 +22,7 @@ export default defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
-      description: 'Human-readable label — for your reference only',
+      description: 'Human-readable label; for your reference only',
     }),
     defineField({
       name: 'file',
