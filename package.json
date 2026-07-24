@@ -42,7 +42,10 @@
     "prettier-plugin-astro": "0.14.1"
   },
   "overrides": {
-    "lodash": "^4.17.23",
     "yauzl": "^3.2.1"
+  },
+  "allowScripts": {
+    "esbuild@0.28.1": true,
+    "fsevents@2.3.3": true
   }
 }
