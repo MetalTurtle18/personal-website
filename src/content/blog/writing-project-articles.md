@@ -7,7 +7,7 @@ updateDate: 2026-03-16
 chronoDate: 2026-02
 featured: true
 image:
-  url: https://res.cloudinary.com/dd1smqo6f/image/upload/v1773049178/R1-00502-0023_sk51ym.jpg
+  url: https://pub-b4dd4c83828943eea64a20017fbacce7.r2.dev/R1-00502-0023_sk51ym.jpg
   alt: An closeup of an orange flower with a blurry green background
 draft: false
 ---

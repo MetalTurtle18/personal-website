@@ -1,32 +1,11 @@
 import type { APIRoute, GetStaticPaths } from 'astro';
-import { sanityClient } from 'sanity:client';
-
-interface SanityPdfDocument {
-  name: string;
-  fileUrl: string;
-}
+import { documents, R2_PUBLIC_BASE_URL } from '../../data/documents';
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  try {
-    const documents: SanityPdfDocument[] = await sanityClient.fetch(
-      `*[_type == "pdfDocument" && defined(file.asset)]{
-        name,
-        "fileUrl": file.asset->url
-      }`
-    );
-
-    return documents.map((doc) => ({
-      params: { slug: doc.name },
-      props: { fileUrl: doc.fileUrl },
-    }));
-  } catch (error) {
-    // Sanity is not configured yet or unreachable — no document routes generated.
-    console.warn(
-      '[document] Could not fetch from Sanity. No /document/* routes will be generated.',
-      error instanceof Error ? error.message : error
-    );
-    return [];
-  }
+  return documents.map((doc) => ({
+    params: { slug: doc.slug },
+    props: { fileUrl: `${R2_PUBLIC_BASE_URL}/${doc.r2Key}` },
+  }));
 };
 
 export const GET: APIRoute = async ({ props }) => {
@@ -40,7 +19,7 @@ export const GET: APIRoute = async ({ props }) => {
 
   return new Response(buffer, {
     headers: {
-      'Content-Type': 'application/pdf',
+      'Content-Type': response.headers.get('Content-Type') ?? 'application/pdf',
       'Cache-Control': 'public, max-age=31536000, immutable',
     },
   });
