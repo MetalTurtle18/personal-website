@@ -1,8 +1,11 @@
 # ai-agent-config Specification
 
 ## Purpose
+
 TBD - created by archiving change cleanup-ai-agent-config. Update Purpose after archive.
+
 ## Requirements
+
 ### Requirement: Single AI Agent Entry Point
 
 The project SHALL expose exactly one root-level, git-tracked entry-point file (`AGENTS.md`) for AI
@@ -27,4 +30,3 @@ instructional content (e.g. empty scratch directories, IDE plugin migration-stat
 
 - **WHEN** a contributor audits the repo for AI/editor configuration files
 - **THEN** no empty `.ai/` directory or JetBrains Copilot migration-state XML files are present
-

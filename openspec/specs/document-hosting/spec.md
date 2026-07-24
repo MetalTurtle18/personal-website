@@ -1,8 +1,11 @@
 # document-hosting Specification
 
 ## Purpose
+
 TBD - created by archiving change migrate-sanity-to-r2. Update Purpose after archive.
+
 ## Requirements
+
 ### Requirement: Static Document Proxy Route
 
 The system SHALL serve downloadable documents (e.g. PDFs) at `/document/<slug>` by proxying bytes
@@ -34,4 +37,3 @@ Cloudinary or Sanity's asset CDN.
 - **THEN** the build SHALL succeed because the R2 hostname is present in `astro.config.mjs`
   `image.domains`
 - **AND** no `cdn.sanity.io` or `res.cloudinary.com` domains SHALL remain in the configuration
-
