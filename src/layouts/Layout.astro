@@ -1,18 +1,15 @@
 ---
 import Navigation from '../components/Navigation.astro';
-import headshot from '../assets/mugshot.jpg';
-import { Icon } from 'astro-icon/components';
+import Footer from '../components/Footer.astro';
+
+import { PREVIEW } from 'astro:env/client';
+
 import { SEO } from 'astro-seo';
-import { PREVIEW, COMMIT_REF, GITHUB_SHA } from 'astro:env/client';
 
 const {
   title = 'dekolis.com',
   description = 'Dorian Kolis is an engineer studying at Dartmouth College with extensive experience in engineering, programming, and biology',
 } = Astro.props;
-
-const buildDate = new Date();
-const formattedBuildDate = buildDate.toISOString();
-const commitHash = COMMIT_REF?.slice(0, 7) || GITHUB_SHA?.slice(0, 7) || 'indev';
 ---
 
 <!doctype html>
@@ -45,7 +42,7 @@ const commitHash = COMMIT_REF?.slice(0, 7) || GITHUB_SHA?.slice(0, 7) || 'indev'
         basic: {
           title: title,
           type: 'article',
-          image: headshot.src,
+          image: 'https://r2bucket.dekolis.com/Index/IMG_1366%20sq.jpg',
         },
         optional: {
           siteName: 'Dorian Kolis',
@@ -77,85 +74,7 @@ const commitHash = COMMIT_REF?.slice(0, 7) || GITHUB_SHA?.slice(0, 7) || 'indev'
     }
     <Navigation />
     <slot />
-    <footer class="footer">
-      <div class="footer-content">
-        <div class="footer-links">
-          <a
-            aria-labelledby="github-icon"
-            href="https://github.com/MetalTurtle18"
-            target="_blank"
-            rel="noopener"
-          >
-            <Icon id="github-icon" name="github" size="3rem" />
-          </a>
-          <a
-            aria-labelledby="linkedin-icon"
-            href="https://www.linkedin.com/in/dorian-kolis"
-            target="_blank"
-            rel="noopener"
-          >
-            <Icon id="linkedin-icon" name="linkedin" size="3rem" />
-          </a>
-          <a
-            aria-labelledby="orcid-icon"
-            href="https://orcid.org/0009-0004-5363-3730"
-            target="_blank"
-            rel="noopener"
-          >
-            <Icon id="orcid-icon" name="orcid" size="3rem" />
-          </a>
-          <a
-            aria-labelledby="printables-icon"
-            href="https://www.printables.com/@MetalTurtle"
-            target="_blank"
-            rel="noopener"
-          >
-            <Icon id="printables-icon" name="printables" size="3rem" />
-          </a>
-          <a
-            aria-labelledby="youtube-icon"
-            href="https://www.youtube.com/@MetalTurtle18"
-            target="_blank"
-            rel="noopener"
-          >
-            <Icon id="youtube-icon" name="youtube" size="3rem" />
-          </a>
-        </div>
-        <div class="footer-detail">
-          <div class="footer-attribution">
-            <span
-              >&copy; 2026{new Date().getFullYear() !== 2026 ? '–' + new Date().getFullYear() : ''} Dorian
-              Kolis</span
-            >
-            <span class="separator">&bull;</span>
-            <span>All Rights Reserved</span>
-          </div>
-          <div class="footer-build-info">
-            <span
-              >Built with <a href="https://astro.build" target="_blank" rel="noopener">Astro</a
-              ></span
-            >
-            <span class="separator">&bull;</span>
-            <span>Deployed {formattedBuildDate}</span>
-            <span class="separator">&bull;</span>
-            <code class="commit-tag">{commitHash}</code>
-          </div>
-          <div class="footer-dev-links">
-            <a
-              href="https://github.com/MetalTurtle18/personal-website"
-              target="_blank"
-              rel="noopener">View Source</a
-            >
-            <span class="separator">&bull;</span>
-            {!PREVIEW && <a href="https://preview.dekolis.com">View Preview Site</a>}
-            {PREVIEW && <a href="https://dekolis.com">View Public (non-preview) Site</a>}
-          </div>
-        </div>
-        <div class="footer-ai-notice" title="Sorry, I still think I am a better writer.">
-          <p>Unless otherwise indicated, no text content on this website is written with AI.</p>
-        </div>
-      </div>
-    </footer>
+    <Footer />
   </body>
 </html>
 
@@ -204,124 +123,5 @@ const commitHash = COMMIT_REF?.slice(0, 7) || GITHUB_SHA?.slice(0, 7) || 'indev'
 
   .preview-notice a:hover {
     text-decoration: underline;
-  }
-
-  .footer {
-    position: absolute;
-    overflow: hidden;
-    bottom: 0;
-    width: 100%;
-    margin-top: 4rem;
-    padding: 3rem 2rem 2rem;
-    background: #f9fafb;
-    border-top: 1px solid #e5e7eb;
-  }
-
-  .footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-    text-align: center;
-    color: #6b7280;
-    font-size: 0.9rem;
-  }
-
-  .footer-content p {
-    margin: 0.3rem 0;
-  }
-
-  .footer-content a {
-    color: #047857;
-    text-decoration: none;
-  }
-
-  .footer-content a:hover {
-    text-decoration: underline;
-  }
-
-  .footer-links {
-    display: flex;
-    flex-flow: row wrap;
-    gap: 10px;
-  }
-
-  .footer-links a:hover {
-    text-decoration: none;
-  }
-
-  .footer-links [data-icon] {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 0.5rem;
-    padding: 0.3rem;
-    transition: all 0.2s ease;
-  }
-
-  .footer-links [data-icon]:hover {
-    box-shadow: 0.1rem 0.1rem 0.1rem black;
-  }
-
-  .footer-links [data-icon='github'] {
-    color: white;
-    background: #181717;
-  }
-
-  .footer-links [data-icon='linkedin'] {
-    color: white;
-    background: #0e4fb5;
-  }
-
-  .footer-links [data-icon='orcid'] {
-    color: white;
-    background: #a6ce39;
-  }
-
-  .footer-links [data-icon='printables'] {
-    color: white;
-    background: #fa6831;
-  }
-
-  .footer-links [data-icon='youtube'] {
-    color: white;
-    background: #ff0000;
-  }
-
-  .separator {
-    color: #d1d5db;
-  }
-
-  .commit-tag {
-    background: #f3f4f6;
-    padding: 0.1rem 0.3rem;
-    border-radius: 4px;
-    font-family: 'JetBrains Mono', 'Courier New', monospace;
-  }
-
-  .footer-ai-notice {
-    text-align: center;
-    background: white;
-    border: 1px solid #047857;
-    border-radius: 0.75rem;
-  }
-
-  .footer-ai-notice p {
-    color: #6b7280;
-    font-size: 0.7rem;
-    padding: 0 0.3rem;
-    margin: 0.5rem 0;
-  }
-
-  @media (max-width: 350px) {
-    .footer-links {
-      gap: 5px;
-    }
-
-    .footer-links [data-icon] {
-      width: 2.4rem;
-      height: 2.4rem;
-    }
   }
 </style>

@@ -53,12 +53,12 @@ const formattedChronoDate = chronoDate?.toLocaleDateString('en-US', {
           {
             updateDate && (
               <>
-                <span class="meta-separator">•</span> <span>updated</span>{' '}
+                <span class="meta-separator"> • </span> <span>updated</span>{' '}
                 <time datetime={updateDate.toISOString()}>{formattedUpdateDate}</time>
               </>
             )
           }
-          <span class="meta-separator">•</span>
+          <span class="meta-separator"> • </span>
           <span class="author">{author}</span>
         </span>
       </div>
@@ -66,8 +66,8 @@ const formattedChronoDate = chronoDate?.toLocaleDateString('en-US', {
         chronoDate && (
           <div class="chrono-date">
             <p>
-              <span>This subject of this article occurred in</span>
-              <time datetime={chronoDate.toISOString()}>{`${formattedChronoDate}.`}</time>
+              <span>This subject of this article occurred in </span>
+              <time datetime={chronoDate.toISOString()}>{`${formattedChronoDate}.`}</time>{' '}
               <a href="/blog/writing-project-articles#dating-new-articles-for-old-projects">
                 Learn more about how I sort articles chronologically.
               </a>
