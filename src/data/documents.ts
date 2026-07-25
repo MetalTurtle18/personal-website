@@ -1,6 +1,6 @@
 // Public Cloudflare R2 bucket base URL. No secrets required — the bucket's R2.dev
 // subdomain is public-read only, matching the previous Sanity CDN behavior.
-export const R2_PUBLIC_BASE_URL = 'https://pub-b4dd4c83828943eea64a20017fbacce7.r2.dev';
+export const R2_PUBLIC_BASE_URL = 'https://r2bucket.dekolis.com';
 
 export interface DocumentEntry {
   /** URL slug served at /document/<slug> */
@@ -14,5 +14,5 @@ export interface DocumentEntry {
  * To add a new document: upload it to the R2 bucket, then add an entry here.
  */
 export const documents: DocumentEntry[] = [
-  { slug: 'meta-mesa-poster.pdf', r2Key: 'meta-mesa-poster.pdf' },
+  { slug: 'meta-mesa-poster.pdf', r2Key: 'D%26D%20Table/meta-mesa-poster.pdf' },
 ];

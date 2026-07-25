@@ -14,7 +14,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://dekolis.com',
   image: {
-    domains: ['docs.astro.build', 'pub-b4dd4c83828943eea64a20017fbacce7.r2.dev'],
+    domains: ['docs.astro.build', 'r2bucket.dekolis.com'],
     layout: 'constrained',
     responsiveStyles: true,
   },

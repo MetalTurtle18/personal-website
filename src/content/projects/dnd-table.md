@@ -8,7 +8,7 @@ author: 'Dorian Kolis'
 featured: true
 draft: true
 image:
-  url: 'https://pub-b4dd4c83828943eea64a20017fbacce7.r2.dev/PromoImage_hixxql.png'
+  url: 'https://r2bucket.dekolis.com/D%26D%20Table/PromoImage_hixxql.png'
   alt: 'A table is centered and has a TV inside facing up displaying a D&D map. There are ghostly images of people comically scattered around the table as if playing a game of Dungeons & Dragons.'
 ---
 

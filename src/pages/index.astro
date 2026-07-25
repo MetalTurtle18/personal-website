@@ -3,7 +3,6 @@ import { getCollection } from 'astro:content';
 import { PREVIEW } from 'astro:env/client';
 import Layout from '../layouts/Layout.astro';
 import ContentCard from '../components/ContentCard.astro';
-import headshot from '../assets/mugshot.jpg';
 
 const name = 'Dorian E. Kolis';
 const title = 'Electrical and Biomedical Engineering Student at Dartmouth College';
@@ -29,7 +28,11 @@ const hasFeaturedContent = featuredPosts.length > 0 || featuredProjects.length >
 
 <Layout title="Home">
   <div class="profile">
-    <img src={headshot.src} alt="Headshot that looks like a mugshot" class="headshot" />
+    <img
+      src="https://r2bucket.dekolis.com/Index/IMG_1366%20sq.jpg"
+      alt="Headshot of Dorian Kolis at Beitou Hot Springs in Taiwan"
+      class="headshot"
+    />
     <h1>{name}</h1>
     <div class="title">{title}</div>
     <p>{bio}</p>
