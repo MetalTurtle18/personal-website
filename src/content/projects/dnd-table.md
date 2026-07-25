@@ -1,6 +1,6 @@
 ---
 title: 'Meta Mesa: D&D Gaming Table with Embedded Digital Map'
-pubDate: 2026-03-29
+pubDate: 2026-07-24
 # updateDate: 2026-01-25
 chronoDate: 2023-06
 description: 'A portable gaming table with an embedded digital map and packs into an SUV trunk'
@@ -93,4 +93,4 @@ Clampoed together and drilled holes I had to use this right angle drill bit to d
 At this point I also rethought my leg idea. I am no longer going to do the secondary table for support. I will stick with the four legs as I initially intended. I think this way it will look better, I already have the wood for it, and it will be easier and faster to create before the design fair. test fit and Then I turned it on and connected my laptop to put a map on it. I then got my picture for the design poster. It works just like I wanted! car test fit Through homework time I finished all four of the TV supports I need. I printed the main body parts with high infill and 8 perimeters. They are really strong even though they are just PLA. They have two nuts and the bolt spins within it. The bolts were a bit hard to turn on their own, so I designed these knobs to go on them to make them easier to turn. I ended up printing them out of nylon since it was already loaded into the MK2.5. They came out well!
 support finishing
 
-## Opensauce
+## Opensauce 2024

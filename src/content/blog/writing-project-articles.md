@@ -21,7 +21,7 @@ Having a neat, accessible record of things I've worked on lets me easily share t
 
 And it's valuable to have a log of how I've solved problems in the past so that when similar ones come up again I am able to breeze through them. Hopefully it can help other engineers too.
 
-A quick anecdote: my senior engineering project in highschool was building a D&D game table <sup>[citation needed]</sup>, and I was "forced" to submit weekly design journals. That was the least entertaining part of the project, as was evidenced by my frequent several-weeks late burst submissions. Yet, it turns out, having those design journals made it a breeze to create a design poster and presentation at the end of the semester. And, that project is going to be the easiest for me to mirror onto this website.
+A quick anecdote: my senior engineering project in highschool was [building a D&D game table](https://dekolis.com/projects/dnd-table), and I was "forced" to submit weekly design journals. That was the least entertaining part of the project, as was evidenced by my frequent several-weeks late burst submissions. Yet, it turns out, having those design journals made it a breeze to create a design poster and presentation at the end of the semester. And, that project is going to be the easiest for me to mirror onto this website.
 
 ## Why didn't I make project logs before?
 
