@@ -1,7 +1,8 @@
 # build-tooling Specification
 
 ## Purpose
-TBD - created by archiving change upgrade-astro-7-and-deps. Update Purpose after archive.
+
+Configure the Astro build pipeline with a remark/rehype Markdown plugin stack, local custom remark plugins, and a pinned Node.js version for reproducible builds.
 ## Requirements
 ### Requirement: Markdown Plugin Pipeline
 

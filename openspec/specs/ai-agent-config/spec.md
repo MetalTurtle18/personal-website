@@ -2,7 +2,7 @@
 
 ## Purpose
 
-TBD - created by archiving change cleanup-ai-agent-config. Update Purpose after archive.
+Configure a single AI agent entry point and keep the repository free of stale editor/tooling artifacts.
 
 ## Requirements
 

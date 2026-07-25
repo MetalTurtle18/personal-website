@@ -6,12 +6,14 @@ Personal portfolio website for Dorian Kolis showcasing biographical information,
 
 ## Tech Stack
 
-- **Astro 5.x** - Static site generator and primary framework
+- **Astro 7.x** - Static site generator and primary framework
 - **TypeScript** - Type checking and enhanced developer experience
 - **ESLint** - Code linting with TypeScript and Astro plugins
 - **Prettier** - Code formatting
 - **GitHub Actions** - CI/CD deployment pipeline
-- **No UI framework** - Plain HTML/CSS/JavaScript for maximum performance
+- **astro-icon** - Icon component integration
+- **astro-seo** - SEO meta tag management
+- **@astrojs/sitemap** - Automatic sitemap generation
 
 ## Project Conventions
 
@@ -39,7 +41,7 @@ Personal portfolio website for Dorian Kolis showcasing biographical information,
 - **Layout system**: Shared layouts for consistent page structure
 - **Scoped styling**: Component-scoped CSS within `<style>` tags in Astro files
 - **Zero JavaScript by default**: Static HTML generation with optional client-side JS
-- **No integrations**: Minimal Astro configuration, no UI framework integrations
+- **Integrations**: astro-icon, astro-seo, @astrojs/sitemap (no UI framework integrations)
 
 ### Testing Strategy
 
@@ -67,4 +69,4 @@ This is a personal website for a Dartmouth College student (Dorian Kolis) studyi
 
 - **GitHub Actions**: Automated deployment pipeline
 - **Hosting**: GitHub Pages (inferred from workflow)
-- **No external APIs or services** currently integrated
+- **Cloudflare R2**: Object storage for document hosting and image assets

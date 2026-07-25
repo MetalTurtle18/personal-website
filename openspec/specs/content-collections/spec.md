@@ -32,7 +32,7 @@ The system SHALL define a shared schema for blog and projects collections using 
 - **WHEN** updateDate field is provided
 - **THEN** updateDate SHALL be coerced to Date type
 - **WHEN** chronoDate field is provided
-- **THEN** chronoDate SHALL be coerced to Date type
+- **THEN** chronoDate SHALL be coerced to Date type and SHALL represent the date the content's subject occurred (e.g. project completion date)
 
 #### Scenario: Optional fields with defaults
 
@@ -41,6 +41,8 @@ The system SHALL define a shared schema for blog and projects collections using 
 - **THEN** author SHALL default to "Dorian Kolis"
 - **WHEN** featured field is omitted
 - **THEN** featured SHALL default to false
+- **WHEN** draft field is omitted
+- **THEN** draft SHALL default to false
 
 #### Scenario: Optional fields without defaults
 
@@ -105,6 +107,8 @@ The system SHALL provide a reusable card component for displaying content previe
 - **THEN** card SHALL display title, description, formatted publication date
 - **AND** card SHALL link to the full content page
 - **AND** optional image SHALL be displayed if provided
+- **AND** if chronoDate is provided, the card SHALL display it alongside the publication date
+- **AND** if draft is true, the card SHALL display a "DRAFT" label and apply draft styling
 
 #### Scenario: Card hover effects
 
@@ -124,6 +128,8 @@ The system SHALL provide a layout for rendering individual markdown posts and pr
 - **WHEN** rendering the individual page
 - **THEN** layout SHALL display title, summary (if provided), publication date, and author
 - **AND** optional hero image SHALL be displayed if provided
+- **AND** if chronoDate is provided, the layout SHALL display a chronological date notice
+- **AND** if draft is true, the layout SHALL display a draft notice banner
 
 #### Scenario: Summary display
 
@@ -149,8 +155,9 @@ The system SHALL provide a listing page displaying all blog posts.
 
 - **GIVEN** blog posts exist in the collection
 - **WHEN** user visits /blog
-- **THEN** all posts SHALL be displayed as cards
+- **THEN** all non-draft posts SHALL be displayed as cards
 - **AND** posts SHALL be sorted by publication date (newest first)
+- **AND** draft posts SHALL be hidden from the listing
 
 #### Scenario: Empty state
 
@@ -184,8 +191,9 @@ The system SHALL provide a listing page displaying all projects.
 
 - **GIVEN** projects exist in the collection
 - **WHEN** user visits /projects
-- **THEN** all projects SHALL be displayed as cards
+- **THEN** all non-draft projects SHALL be displayed as cards
 - **AND** projects SHALL be sorted by publication date (newest first)
+- **AND** draft projects SHALL be hidden from the listing
 
 #### Scenario: Empty state
 
@@ -219,7 +227,7 @@ The system SHALL display featured blog posts and projects on the home page.
 
 - **GIVEN** projects marked with featured: true
 - **WHEN** home page renders
-- **THEN** up to 3 featured projects SHALL be displayed
+- **THEN** up to 3 featured non-draft projects SHALL be displayed
 - **AND** projects SHALL be sorted by publication date (newest first)
 - **AND** a "View all projects →" link SHALL be provided
 
@@ -227,7 +235,7 @@ The system SHALL display featured blog posts and projects on the home page.
 
 - **GIVEN** blog posts marked with featured: true
 - **WHEN** home page renders
-- **THEN** up to 3 featured posts SHALL be displayed
+- **THEN** up to 3 featured non-draft posts SHALL be displayed
 - **AND** posts SHALL be sorted by publication date (newest first)
 - **AND** a "View all posts →" link SHALL be provided
 
@@ -265,8 +273,10 @@ The system SHALL provide responsive layouts for mobile and desktop devices.
 - Navigation: `src/components/Navigation.astro`
 - Content card: `src/components/ContentCard.astro`
 - Markdown layout: `src/layouts/MarkdownPost.astro`
+- Base layout: `src/layouts/Layout.astro`
 - Blog routes: `src/pages/blog/index.astro`, `src/pages/blog/[slug].astro`
 - Projects routes: `src/pages/projects/index.astro`, `src/pages/projects/[slug].astro`
+- Home page: `src/pages/index.astro`
 
 ### Content Schema
 
@@ -277,14 +287,15 @@ The system SHALL provide responsive layouts for mobile and desktop devices.
   summary?: string
   pubDate: Date (coerced)
   updateDate?: Date (coerced)
-  chronoDate?: string
+  chronoDate?: Date (coerced)
   author: string (default: "Dorian Kolis")
   featured: boolean (default: false)
+  draft: boolean (default: false)
   image?: { url: string, alt: string }
 }
 ```
 
-### Astro 5.x Content Layer API
+### Astro Content Layer API
 
 - Uses `glob()` loader from 'astro/loaders'
 - Uses `render()` function from 'astro:content' to render markdown

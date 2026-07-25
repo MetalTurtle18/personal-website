@@ -2,7 +2,7 @@
 
 ## Purpose
 
-TBD - created by archiving change migrate-sanity-to-r2. Update Purpose after archive.
+Serve downloadable documents (PDFs) via a static proxy route backed by Cloudflare R2, and reference externally hosted images from an R2 public bucket instead of a CMS or third-party CDN.
 
 ## Requirements
 
