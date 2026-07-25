@@ -4,7 +4,6 @@ description: 'Keeping active project journals is useful and I wish I did it more
 # summary: 'My biggest task in creating this website has been populating it with project and blog articles. I can list projects—completed and half-finished—going back more than ten years. I had assumed I would "simply remember" all the details and dig up photos to retroactively document the processes. Turns out, if you don''t keep up with your design journals, that''s a lot harder than it sounds.'
 pubDate: 2026-02-24
 updateDate: 2026-03-16
-chronoDate: 2026-02
 featured: true
 image:
   url: https://r2bucket.dekolis.com/Index/R1-00502-0023_sk51ym.jpg
