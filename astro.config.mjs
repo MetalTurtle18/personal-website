@@ -2,6 +2,7 @@
 import { defineConfig, envField } from 'astro/config';
 import { unified } from '@astrojs/markdown-remark';
 
+import mdx from '@astrojs/mdx';
 import icon from 'astro-icon';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
@@ -40,7 +41,7 @@ export default defineConfig({
       }),
     },
   },
-  integrations: [icon(), sitemap()],
+  integrations: [mdx(), icon(), sitemap()],
   markdown: {
     processor: unified({
       smartypants: true,
