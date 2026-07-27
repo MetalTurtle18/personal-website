@@ -3,9 +3,7 @@
 ## Purpose
 
 Provide a type-safe content management system for blog posts and projects using Astro's Content Layer API, enabling markdown-based content with schema validation, featured content display, and responsive listing pages.
-
 ## Requirements
-
 ### Requirement: Content Schema Definition
 
 The system SHALL define a shared schema for blog and projects collections using Zod validation.
@@ -54,25 +52,25 @@ The system SHALL define a shared schema for blog and projects collections using 
 
 ### Requirement: Blog Collection
 
-The system SHALL provide a blog collection loaded from markdown files.
+The system SHALL provide a blog collection loaded from markdown and MDX files.
 
 #### Scenario: Blog content loading
 
-- **GIVEN** markdown files in src/content/blog/
+- **GIVEN** markdown or MDX files in src/content/blog/
 - **WHEN** the site builds
-- **THEN** files SHALL be loaded using glob loader
+- **THEN** files SHALL be loaded using glob loader matching `**/*.{md,mdx}`
 - **AND** each file SHALL be validated against the content schema
 - **AND** entries SHALL be queryable via getCollection('blog')
 
 ### Requirement: Projects Collection
 
-The system SHALL provide a projects collection loaded from markdown files.
+The system SHALL provide a projects collection loaded from markdown and MDX files.
 
 #### Scenario: Projects content loading
 
-- **GIVEN** markdown files in src/content/projects/
+- **GIVEN** markdown or MDX files in src/content/projects/
 - **WHEN** the site builds
-- **THEN** files SHALL be loaded using glob loader
+- **THEN** files SHALL be loaded using glob loader matching `**/*.{md,mdx}`
 - **AND** each file SHALL be validated against the content schema
 - **AND** entries SHALL be queryable via getCollection('projects')
 
