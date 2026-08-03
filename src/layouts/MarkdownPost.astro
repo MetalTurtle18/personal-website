@@ -294,6 +294,38 @@ const formattedChronoDate = chronoDate?.toLocaleDateString('en-US', {
     margin: 1.5rem 0;
   }
 
+  /* Captioned figures & masonry image grids from markdown */
+  .prose :global(figure.image-figure) {
+    margin: 1.5rem 0;
+    max-width: 100%;
+  }
+
+  .prose :global(figure.image-figure img) {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+  }
+
+  .prose :global(figure.image-figure figcaption) {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 0.35rem;
+    line-height: 1.4;
+    text-align: center;
+  }
+
+  .prose :global(.image-grid) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-auto-rows: minmax(180px, auto);
+    gap: 0.5rem;
+  }
+
+  .prose :global(.image-grid figure.image-figure) {
+    margin: 0;
+  }
+
   /* Anchor link styles for heading permalinks */
   .prose :global(.anchor) {
     position: relative;
@@ -647,17 +679,25 @@ const formattedChronoDate = chronoDate?.toLocaleDateString('en-US', {
     let touchStartX = 0;
     let touchEndX = 0;
 
-    dialog.addEventListener('touchstart', (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
+    dialog.addEventListener(
+      'touchstart',
+      (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      },
+      { passive: true }
+    );
 
-    dialog.addEventListener('touchend', (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      const diff = touchStartX - touchEndX;
-      if (Math.abs(diff) > 50) {
-        if (diff > 0) showNext();
-        else showPrev();
-      }
-    }, { passive: true });
+    dialog.addEventListener(
+      'touchend',
+      (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 50) {
+          if (diff > 0) showNext();
+          else showPrev();
+        }
+      },
+      { passive: true }
+    );
   }
 </script>

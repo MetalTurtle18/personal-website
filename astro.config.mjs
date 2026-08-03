@@ -7,7 +7,7 @@ import icon from 'astro-icon';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import remarkToc from 'remark-toc';
-import { localSmartyPants, localEmbedder } from './src/lib/remark-plugins.mjs';
+import { localSmartyPants, localEmbedder, localImageFigure } from './src/lib/remark-plugins.mjs';
 
 import sitemap from '@astrojs/sitemap';
 
@@ -45,7 +45,7 @@ export default defineConfig({
   markdown: {
     processor: unified({
       smartypants: true,
-      remarkPlugins: [localSmartyPants, localEmbedder, [remarkToc, { heading: 'Contents' }]],
+      remarkPlugins: [localSmartyPants, localEmbedder, localImageFigure, [remarkToc, { heading: 'Contents' }]],
       rehypePlugins: [
         rehypeSlug,
         [

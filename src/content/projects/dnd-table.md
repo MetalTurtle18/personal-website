@@ -12,8 +12,6 @@ image:
   alt: 'A table is centered and has a TV inside facing up displaying a D&D map. There are ghostly images of people comically scattered around the table as if playing a game of Dungeons & Dragons.'
 ---
 
-import ImageGrid from '../../components/ImageGrid.astro'
-
 This project was my high school senior engineering project, where I wanted to try something new with mechanical design and woodworking. This article is adapted from my final design poster, which you can view [here](/document/meta-mesa-poster.pdf), and my weekly design journals that I submitted for the class.
 
 # Contents
@@ -26,10 +24,8 @@ My solution is to put a TV horizontally in a tabletop. My table lets a game mast
 
 The table must disassemble small enough to be transported in a car. This means the table top is designed to break into four sections and that the legs are removable.
 
-<ImageGrid layout="2col" images={[
-  { src: 'https://r2bucket.dekolis.com/D%26D%20Table/problem%20graphic%20v2.png', alt: 'Two tabletops are drawn each with a D&D map and minatures on it. The bottom one shows the same map shifted left with a new section added. The miniatures are taken off the bottom board. Text describes how the map cannot be moved without disturbing the pieces on top.', caption: 'Problem graphic' },
-  { src: 'https://r2bucket.dekolis.com/D%26D%20Table/overview.png', alt: 'A D&D map is show on a single tabletop. A person labeled "Game Master" is standing in front of it. The Game Master is holding a laptop with a wire running from it to the table.', caption: 'Solution overview' },
-]} />
+![Two tabletops are drawn each with a D&D map and minatures on it. The bottom one shows the same map shifted left with a new section added. The miniatures are taken off the bottom board. Text describes how the map cannot be moved without disturbing the pieces on top.](https://r2bucket.dekolis.com/D%26D%20Table/problem%20graphic%20v2.png "Problem graphic")
+![A D&D map is show on a single tabletop. A person labeled "Game Master" is standing in front of it. The Game Master is holding a laptop with a wire running from it to the table.](https://r2bucket.dekolis.com/D%26D%20Table/overview.png "Solution overview")
 
 # Poster / Presentation
 
@@ -39,36 +35,28 @@ This section comes from my poster, which you can view [here](/document/meta-mesa
 
 I designed the table in CAD using Fusion 360. I modeled the TV using real-world measurements, and then I modeled the table around it. I then added in the legs and other pieces, like adjustable TV supports.
 
-<ImageGrid layout="3col" images={[
-  { src: 'https://r2bucket.dekolis.com/D%26D%20Table/TopSide%404K.PNG', alt: 'A CAD render of the table top side.', caption: 'Table CAD render top side' },
-  { src: 'https://r2bucket.dekolis.com/D%26D%20Table/TableUnderRenderWHITEBACKGROUND.png', alt: 'A CAD render of the table under side.', caption: 'Table CAD render under side' },
-  { src: 'https://r2bucket.dekolis.com/D%26D%20Table/TableExplodedRenderWHITEBACKGROUND.png', alt: 'A CAD render of the table exploded. The table top is exploded out into the four sections.', caption: 'Table CAD render exploded' },
-]} />
+![A CAD render of the table top side.](https://r2bucket.dekolis.com/D%26D%20Table/TopSide%404K.PNG "Table CAD render top side")
+![A CAD render of the table under side.](https://r2bucket.dekolis.com/D%26D%20Table/TableUnderRenderWHITEBACKGROUND.png "Table CAD render under side")
+![A CAD render of the table exploded. The table top is exploded out into the four sections.](https://r2bucket.dekolis.com/D%26D%20Table/TableExplodedRenderWHITEBACKGROUND.png "Table CAD render exploded")
 
 ## TV Supports
 
 I created these 3D-printable supports to hold the TV in place inside the table. They use two nuts and a bolt to allow for fine height adjustment of each corner of the TV by raising or lowering the nut.
 
-<ImageGrid layout="2col" images={[
-  { src: 'https://r2bucket.dekolis.com/D%26D%20Table/TVSupportPrintRender.png', alt: 'A blue object with side holes to attach to the table and a vertical hole and hex cutout for a bolt head or nut.', caption: 'TV support render' },
-  { src: 'https://r2bucket.dekolis.com/D%26D%20Table/tv%20support%20real%20red.png', alt: 'The physical object in red with a silver metal bolt and orange handle.', caption: 'TV support print (PLA + Nylon twist handle)' },
-]} />
+![A blue object with side holes to attach to the table and a vertical hole and hex cutout for a bolt head or nut.](https://r2bucket.dekolis.com/D%26D%20Table/TVSupportPrintRender.png "TV support render")
+![The physical object in red with a silver metal bolt and orange handle.](https://r2bucket.dekolis.com/D%26D%20Table/tv%20support%20real%20red.png "TV support print (PLA + Nylon twist handle)")
 
 ## Dimensions
 
-<ImageGrid layout="2col" images={[
-  { src: 'https://r2bucket.dekolis.com/D%26D%20Table/table%20dimensions.jpg', alt: 'The physical dimensions of the table. Eight feet by four feet in total, with a 35.25 inch by 20.5 inch cutout in the center for the TV.', caption: 'Table dimensions' },
-  { src: 'https://r2bucket.dekolis.com/D%26D%20Table/table%20leg%20dimension.jpg', alt: 'The physical dimensions of the table legs. The tabletop is six inches deep, and the length of each leg is 32.5 inches. There is a two inch foot under and the thickness of the table surface on top.', caption: 'Table leg dimensions' },
-]} />
+![The physical dimensions of the table. Eight feet by four feet in total, with a 35.25 inch by 20.5 inch cutout in the center for the TV.](https://r2bucket.dekolis.com/D%26D%20Table/table%20dimensions.jpg "Table dimensions")
+![The physical dimensions of the table legs. The tabletop is six inches deep, and the length of each leg is 32.5 inches. There is a two inch foot under and the thickness of the table surface on top.](https://r2bucket.dekolis.com/D%26D%20Table/table%20leg%20dimension.jpg "Table leg dimensions")
 
 ## Completed Version
 
 The final table works at a basic level but could use some improvements. It meets the goals of portability, fitting in a car. It could benefit from some build quality improvements in a future version.
 
-<ImageGrid layout="2col" images={[
-  { src: 'https://r2bucket.dekolis.com/D%26D%20Table/working%20-%20UNEDITED.jpeg', alt: 'The working table in the maker studio after its first assembly. The table top is assembled and placed on another table. No legs are present. The TV in the middle is displaying a D&D map.', caption: 'The working table in the maker studio after its first assembly.' },
-  { src: 'https://r2bucket.dekolis.com/D%26D%20Table/car%20-%20UNEDITED.jpeg', alt: 'The four tabletop pieces stacked side by side in a car trunk.', caption: 'The table in a car.' },
-]} />
+![The working table in the maker studio after its first assembly. The table top is assembled and placed on another table. No legs are present. The TV in the middle is displaying a D&D map.](https://r2bucket.dekolis.com/D%26D%20Table/working%20-%20UNEDITED.jpeg "The working table in the maker studio after its first assembly.")
+![The four tabletop pieces stacked side by side in a car trunk.](https://r2bucket.dekolis.com/D%26D%20Table/car%20-%20UNEDITED.jpeg "The table in a car.")
 
 ## Software
 

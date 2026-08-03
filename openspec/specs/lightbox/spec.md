@@ -16,7 +16,7 @@ The system SHALL open a lightbox when any image in article prose is clicked.
 
 #### Scenario: Click grid image
 
-- **GIVEN** an article with an `<ImageGrid>` component
+- **GIVEN** an article with a markdown image grid (adjacent `![alt](url)` lines rendered as a fixed-row grid)
 - **WHEN** user clicks an image within the grid
 - **THEN** the same lightbox dialog SHALL open with that image
 
@@ -70,4 +70,3 @@ The system SHALL show the current image position among all page images.
 - **GIVEN** the lightbox is open
 - **WHEN** viewing an image
 - **THEN** a position indicator (e.g., "3 / 12") SHALL be visible
-
