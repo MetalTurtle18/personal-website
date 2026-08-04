@@ -25,7 +25,8 @@ export function localImageFigure() {
       );
       if (children.length === 0) return;
 
-      // Accept only pure-image paragraphs, optionally ending in a `[width]` text node
+      // Accept only pure-image paragraphs, optionally carrying a `[width]` bracket
+      // after the first image (applies to a solo figure or the whole grid)
       const images = [];
       let width = null;
 
@@ -35,14 +36,19 @@ export function localImageFigure() {
           images.push(child);
           continue;
         }
-        if (child.type === 'text' && images.length > 0 && !width && i === children.length - 1) {
+        if (child.type === 'text') {
           const match = child.value.trim().match(/^\[(\d+(?:\.\d+)?(?:%?))\]$/);
-          if (match) {
-            width = match[1].endsWith('%') ? match[1] : `${match[1]}px`;
-            continue;
+          if (!match) {
+            // Any other text (before images, links, emphasis, etc.) → leave untouched
+            return;
           }
+          if (images.length === 1 && !width) {
+            width = match[1].endsWith('%') ? match[1] : `${match[1]}px`;
+          }
+          // Width brackets after later images are consumed but ignored
+          continue;
         }
-        // Any other content (text before images, links, emphasis, etc.) → leave untouched
+        // Any other node type → leave untouched
         return;
       }
 
@@ -71,8 +77,9 @@ export function localImageFigure() {
         const figures = images
           .map((img) => `      <figure class="image-figure">\n${buildContent(img)}\n      </figure>`)
           .join('\n');
+        const widthStyle = width ? ` style="max-width: ${escapeHtml(width)}"` : '';
         node.type = 'html';
-        node.value = `<div class="image-grid">\n${figures}\n      </div>`;
+        node.value = `<div class="image-grid"${widthStyle}>\n${figures}\n      </div>`;
       } else {
         const widthStyle = width ? ` style="max-width: ${escapeHtml(width)}"` : '';
         node.type = 'html';

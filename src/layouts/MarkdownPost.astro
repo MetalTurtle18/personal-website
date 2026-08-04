@@ -296,7 +296,7 @@ const formattedChronoDate = chronoDate?.toLocaleDateString('en-US', {
 
   /* Captioned figures & masonry image grids from markdown */
   .prose :global(figure.image-figure) {
-    margin: 1.5rem 0;
+    margin: 1.5rem auto;
     max-width: 100%;
   }
 
@@ -317,13 +317,21 @@ const formattedChronoDate = chronoDate?.toLocaleDateString('en-US', {
 
   .prose :global(.image-grid) {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    grid-auto-rows: minmax(180px, auto);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-auto-rows: flex;
     gap: 0.5rem;
+    margin: 1.5rem auto;
   }
 
   .prose :global(.image-grid figure.image-figure) {
     margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .prose :global(.image-grid),
+    .prose :global(figure.image-figure) {
+      max-width: 100% !important;
+    }
   }
 
   /* Anchor link styles for heading permalinks */
