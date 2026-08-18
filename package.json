@@ -7,8 +7,9 @@
   },
   "scripts": {
     "dev": "PREVIEW=true astro dev",
-    "testprod": "PREVIEW=false astro dev",
-    "build": "astro build",
+    "dev-prod": "PREVIEW=false astro dev",
+    "build": "PREVIEW=false astro build",
+    "build-draft": "PREVIEW=true astro build",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint . --ext .js,.ts,.astro",
