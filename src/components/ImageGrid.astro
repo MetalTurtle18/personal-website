@@ -1,0 +1,8 @@
+---
+const { width } = Astro.props;
+const widthStyle = width ? `max-width: ${width}` : null;
+---
+
+<div class="image-grid" style={widthStyle}>
+  <slot />
+</div>

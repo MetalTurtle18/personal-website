@@ -1,8 +1,11 @@
 # lightbox Specification
 
 ## Purpose
+
 TBD - created by archiving change add-image-grid-lightbox. Update Purpose after archive.
+
 ## Requirements
+
 ### Requirement: Lightbox Activation
 
 The system SHALL open a lightbox when any image in article prose is clicked.

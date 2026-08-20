@@ -1,8 +1,11 @@
 # captioned-images Specification
 
 ## Purpose
+
 TBD - created by archiving change unify-image-grids. Update Purpose after archive.
+
 ## Requirements
+
 ### Requirement: Captioned Figure Rendering
 
 The system SHALL render a single markdown image with a title attribute as a `<figure>` element with a caption.
@@ -114,4 +117,3 @@ The system SHALL center standalone figures and image-grid containers within the 
 - **GIVEN** a figure or grid at full content width
 - **WHEN** the article renders
 - **THEN** it SHALL span the full content pane width, appearing centered
-

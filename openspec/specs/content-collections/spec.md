@@ -3,7 +3,9 @@
 ## Purpose
 
 Provide a type-safe content management system for blog posts and projects using Astro's Content Layer API, enabling markdown-based content with schema validation, featured content display, and responsive listing pages.
+
 ## Requirements
+
 ### Requirement: Content Schema Definition
 
 The system SHALL define a shared schema for blog and projects collections using Zod validation.

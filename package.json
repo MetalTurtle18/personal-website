@@ -41,7 +41,8 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-astro": "^3.0.1",
     "prettier": "^3.9.6",
-    "prettier-plugin-astro": "0.14.1"
+    "prettier-plugin-astro": "0.14.1",
+    "prettier-plugin-markdown-html": "^1.6.0"
   },
   "overrides": {
     "yauzl": "^3.2.1"

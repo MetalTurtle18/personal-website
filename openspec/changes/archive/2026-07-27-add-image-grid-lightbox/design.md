@@ -22,30 +22,35 @@ The site uses Astro 7 with plain markdown content collections. Articles are rend
 ### MDX over Remark Plugin for Grids
 
 MDX chosen because:
+
 - Image grids are UI components, not text transforms
 - Astro has first-class MDX support with minimal config
 - Component approach is more extensible (captions, future layouts)
 - Avoids complex mdast/hast AST manipulation for a presentation concern
 
 Alternatives considered:
+
 - Remark container directive plugin: More complex, harder to maintain, limited to markdown syntax
 - Rehype plugin wrapping images: Operates after HTML generation, awkward for structured data
 
 ### Native `<dialog>` for Lightbox
 
 Chosen because:
+
 - Built-in backdrop, focus trapping, and dismiss behavior
 - No dependency needed
 - ~30 lines of JS for navigation logic
 - CSS `::backdrop` pseudo-element for overlay styling
 
 Alternatives considered:
+
 - Custom overlay div: Would need manual focus management and backdrop click handling
 - PhotoSwipe/Fancybox: Adds dependency, against project conventions
 
 ### Global Handler vs Per-Component Lightbox
 
 Global handler on `MarkdownPost` chosen because:
+
 - Lightbox works for ALL images automatically (markdown `![]()`, `<ImageGrid>`, any future `<img>`)
 - Single implementation, no duplication
 - Images in `.prose` are already scoped by the layout's DOM
@@ -53,6 +58,7 @@ Global handler on `MarkdownPost` chosen because:
 ### ImageGrid as Props-Based Component
 
 Props-based API chosen because:
+
 - Images are remote R2 URLs — no local file imports to leverage
 - Cleaner syntax for the common case (list of URLs + alts)
 - Captions as optional props keep the API simple

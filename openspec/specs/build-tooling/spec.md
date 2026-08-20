@@ -3,7 +3,9 @@
 ## Purpose
 
 Configure the Astro build pipeline with a remark/rehype Markdown plugin stack, local custom remark plugins, and a pinned Node.js version for reproducible builds.
+
 ## Requirements
+
 ### Requirement: Markdown Plugin Pipeline
 
 The system SHALL render `.md` content using the remark/rehype plugin pipeline (via
@@ -27,4 +29,3 @@ The project SHALL declare its target Node.js version via both an `.nvmrc` file a
 
 - **WHEN** a contributor runs a version manager (e.g. `nvm use`) in the project root
 - **THEN** it SHALL switch to the Node version declared in `.nvmrc`
-

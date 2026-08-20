@@ -1,0 +1,17 @@
+---
+import { Image } from 'astro:assets';
+
+const { src, alt, caption, width, lightbox } = Astro.props;
+const widthStyle = width ? `max-width: ${width}` : null;
+---
+
+<figure class="image-figure" style={widthStyle}>
+  <Image
+    src={src}
+    alt={alt || ''}
+    inferSize={true}
+    data-caption={caption || null}
+    lightbox-id={lightbox}
+  />
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
