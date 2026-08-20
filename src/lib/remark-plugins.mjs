@@ -12,87 +12,40 @@ export function localSmartyPants() {
   };
 }
 
-// 3. Custom Image Figures & Masonry Grids
-export function localImageFigure() {
+// 2. Auto-set lightbox ids for groups of images
+export function lightboxIndexer() {
   return (tree) => {
-    visit(tree, 'paragraph', (node, _index, parent) => {
-      // Only transform top-level paragraphs
-      if (parent.type !== 'root') return;
-
-      // Filter out whitespace-only text nodes (e.g. spacing between inline images)
-      const children = node.children.filter(
-        (child) => !(child.type === 'text' && child.value.trim() === '')
-      );
-      if (children.length === 0) return;
-
-      // Accept only pure-image paragraphs, optionally carrying a `[width]` bracket
-      // after the first image (applies to a solo figure or the whole grid)
-      const images = [];
-      let width = null;
-
-      for (let i = 0; i < children.length; i++) {
-        const child = children[i];
-        if (child.type === 'image') {
-          images.push(child);
-          continue;
-        }
-        if (child.type === 'text') {
-          const match = child.value.trim().match(/^\[(\d+(?:\.\d+)?(?:%?))\]$/);
-          if (!match) {
-            // Any other text (before images, links, emphasis, etc.) → leave untouched
-            return;
-          }
-          if (images.length === 1 && !width) {
-            width = match[1].endsWith('%') ? match[1] : `${match[1]}px`;
-          }
-          // Width brackets after later images are consumed but ignored
-          continue;
-        }
-        // Any other node type → leave untouched
-        return;
+    // Make a new 6-digit hex id
+    const newLightboxId = () => Math.floor(Math.random() * 0xffffff).toString(16);
+    let currentLightboxId = newLightboxId();
+    let figureCounter = 1;
+    visit(tree, 'mdxJsxFlowElement', (node) => {
+      if (node.name === 'ImageGrid') {
+        // For a new ImageGrid, we know the next n figures belong to the same group, which n is the number of children of this grid
+        figureCounter = node.children.length;
+        currentLightboxId =
+          node.attributes.filter((a) => a.name === 'lightbox')[0]?.value ?? newLightboxId(); // If the user has a lightbox id on a group, use that for all the children of the group
+      } else if (node.name === 'Figure' && figureCounter == 0) {
+        // Otherwise, we are either in a figure that is part of a group, or, if the counter has reacher zero, we must be in a new independent figure
+        figureCounter = 1;
+        currentLightboxId = newLightboxId();
       }
-
-      if (images.length === 0) return;
-
-      // Bare single image with no caption and no width → render exactly as before
-      if (images.length === 1 && !images[0].title && !width) return;
-
-      const escapeHtml = (value) =>
-        value
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
-
-      const buildContent = (img) => {
-        const src = escapeHtml(img.url);
-        const alt = escapeHtml(img.alt);
-        const caption = img.title ? escapeHtml(img.title) : '';
-        const dataCaption = caption ? ` data-caption="${caption}"` : '';
-        const figcaption = caption ? `\n        <figcaption>${caption}</figcaption>\n      ` : '';
-        return `        <img src="${src}" alt="${alt}"${dataCaption} />${figcaption}`;
-      };
-
-      if (images.length > 1) {
-        const figures = images
-          .map((img) => `      <figure class="image-figure">\n${buildContent(img)}\n      </figure>`)
-          .join('\n');
-        const widthStyle = width ? ` style="max-width: ${escapeHtml(width)}"` : '';
-        node.type = 'html';
-        node.value = `<div class="image-grid"${widthStyle}>\n${figures}\n      </div>`;
-      } else {
-        const widthStyle = width ? ` style="max-width: ${escapeHtml(width)}"` : '';
-        node.type = 'html';
-        node.value = `<figure class="image-figure"${widthStyle}>\n      ${buildContent(images[0])}\n      </figure>`;
+      if (node.name === 'Figure') {
+        figureCounter--;
+        node.attributes = node.attributes || [];
+        if (!node.attributes.some((a) => a.name === 'lightbox'))
+          // Avoid overwriting the id if the user specified one manually
+          node.attributes.push({
+            type: 'mdxJsxAttribute',
+            name: 'lightbox',
+            value: currentLightboxId,
+          });
       }
-
-      delete node.children;
-      delete node.position;
     });
   };
 }
 
-// 2. Custom Video Embedder (YouTube Example)
+// 3. Custom Video Embedder (YouTube Example)
 export function localEmbedder() {
   return (tree) => {
     visit(tree, 'paragraph', (node) => {

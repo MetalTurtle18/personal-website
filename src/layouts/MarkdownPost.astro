@@ -628,25 +628,41 @@ const formattedChronoDate = chronoDate?.toLocaleDateString('en-US', {
   const lightboxImg = dialog?.querySelector<HTMLImageElement>('.lightbox-img');
   const lightboxCaption = dialog?.querySelector('.lightbox-caption');
   const lightboxPosition = dialog?.querySelector('.lightbox-position');
-  const btnClose = dialog?.querySelector('.lightbox-close');
-  const btnPrev = dialog?.querySelector('.lightbox-prev');
-  const btnNext = dialog?.querySelector('.lightbox-next');
+  const btnClose = dialog?.querySelector<HTMLButtonElement>('.lightbox-close');
+  const btnPrev = dialog?.querySelector<HTMLButtonElement>('.lightbox-prev');
+  const btnNext = dialog?.querySelector<HTMLButtonElement>('.lightbox-next');
 
   if (dialog && lightboxImg) {
     const allImages = Array.from(document.querySelectorAll<HTMLImageElement>('article .prose img'));
+    const groupedImages = Map.groupBy(
+      allImages,
+      (img) => img.getAttribute('lightbox-id') ?? '_NULL_ID'
+    );
+    let currentId = '';
     let currentIndex = 0;
+    let currentGroup: HTMLImageElement[] | undefined;
 
-    function openLightbox(index: number) {
-      if (index < 0 || index >= allImages.length) return;
+    function openLightbox(id: string, index: number) {
+      currentGroup = groupedImages.get(id);
+      if (!currentGroup) return;
+      if (index < 0 || index >= currentGroup.length) return;
+      if (currentGroup.length == 1) {
+        if (btnPrev) btnPrev.style.display = 'none';
+        if (btnNext) btnNext.style.display = 'none';
+      } else {
+        if (btnPrev) btnPrev.style.display = '';
+        if (btnNext) btnNext.style.display = '';
+      }
       currentIndex = index;
-      const img = allImages[index];
+      currentId = id;
+      const img = currentGroup[index];
       lightboxImg!.src = img.src;
       lightboxImg!.alt = img.alt;
       if (lightboxCaption) {
         lightboxCaption.textContent = img.dataset.caption || '';
       }
-      if (lightboxPosition && allImages.length > 1) {
-        lightboxPosition.textContent = `${index + 1} / ${allImages.length}`;
+      if (lightboxPosition && currentGroup.length > 1) {
+        lightboxPosition.textContent = `${index + 1} / ${currentGroup.length}`;
       } else if (lightboxPosition) {
         lightboxPosition.textContent = '';
       }
@@ -658,15 +674,19 @@ const formattedChronoDate = chronoDate?.toLocaleDateString('en-US', {
     }
 
     function showPrev() {
-      openLightbox((currentIndex - 1 + allImages.length) % allImages.length);
+      if (currentGroup!.length <= 1) return;
+      openLightbox(currentId, (currentIndex - 1 + currentGroup!.length) % currentGroup!.length);
     }
 
     function showNext() {
-      openLightbox((currentIndex + 1) % allImages.length);
+      if (currentGroup!.length <= 1) return;
+      openLightbox(currentId, (currentIndex + 1) % currentGroup!.length);
     }
 
-    allImages.forEach((img, i) => {
-      img.addEventListener('click', () => openLightbox(i));
+    groupedImages.forEach((group, id) => {
+      group.forEach((img, i) => {
+        img.addEventListener('click', () => openLightbox(id, i));
+      });
     });
 
     btnClose?.addEventListener('click', closeLightbox);
