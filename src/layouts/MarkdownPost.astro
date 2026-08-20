@@ -17,18 +17,21 @@ interface Props {
 const { title, summary, pubDate, updateDate, chronoDate, author, image, draft } = Astro.props;
 
 const formattedPubDate = pubDate.toLocaleDateString('en-US', {
+  timeZone: 'UTC',
   year: 'numeric',
   month: 'long',
   day: 'numeric',
 });
 
 const formattedUpdateDate = updateDate?.toLocaleDateString('en-US', {
+  timeZone: 'UTC',
   year: 'numeric',
   month: 'long',
   day: 'numeric',
 });
 
 const formattedChronoDate = chronoDate?.toLocaleDateString('en-US', {
+  timeZone: 'UTC',
   year: 'numeric',
   month: 'long',
 });
