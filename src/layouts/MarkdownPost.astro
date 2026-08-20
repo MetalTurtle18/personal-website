@@ -638,7 +638,7 @@ const formattedChronoDate = chronoDate?.toLocaleDateString('en-US', {
   const btnNext = dialog?.querySelector<HTMLButtonElement>('.lightbox-next');
 
   if (dialog && lightboxImg) {
-    const allImages = Array.from(document.querySelectorAll<HTMLImageElement>('article .prose img'));
+    const allImages = Array.from(document.querySelectorAll<HTMLImageElement>('article .prose img, article .hero-image img'));
     const groupedImages = Map.groupBy(
       allImages,
       (img) => img.getAttribute('lightbox-id') ?? '_NULL_ID'
