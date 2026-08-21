@@ -1,16 +1,14 @@
 ---
 title: '8-bit Breadboard CPU'
-pubDate: 2026-01-15
-updateDate: 2026-01-25
-chronoDate: 2025-09
-description: 'This is the short description of a project that shows on the content card.'
-summary: "This is a slightly longer description that will show at the top of the article. I will write several sentences here so it can showcase the layout that I will make for the summary section of an article. I am going to keep writing now to pad this out a bit more and take up a few more lines of the page. I think writing this one more sentence will probably be enough so let's just keep going on a little bit longer and then it'll be good to stop and see what this looks like on the page."
-author: 'Some Computer'
-featured: false
+pubDate: 2026-08-20
+updateDate: 2026-08-20
+description: 'Homemade Turing complete 8-bit breadboard CPU (SAP architecture)'
+author: 'Dorian Kolis'
+featured: true
 draft: true
 image:
-  url: 'https://docs.astro.build/assets/rose.webp'
-  alt: 'The Astro logo on a dark background with a pink glow.'
+  url: 'https://r2bucket.dekolis.com/8-bit%20CPU/IMG_7151.jpeg'
+  alt: 'A large group of breadboards stuck together covered with rows of large black ICs, LEDs, and hundreds of hand-bent colored jumper wires connecting between them.'
 ---
 
 This is a template project. I am not including a title in the Markdown because the front matter will be rendered as a title.
