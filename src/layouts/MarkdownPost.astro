@@ -45,7 +45,7 @@ const formattedChronoDate = chronoDate?.toLocaleDateString('en-US', {
     {
       image && (
         <div class="hero-image">
-          <Image src={image.url} alt={image.alt} inferSize={true} />
+          <Image src={image.url} alt={image.alt} inferSize={true} fetchpriority="high"}/>
         </div>
       )
     }
