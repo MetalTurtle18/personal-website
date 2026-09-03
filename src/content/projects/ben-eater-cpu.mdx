@@ -1,0 +1,46 @@
+---
+title: '8-bit Breadboard CPU'
+pubDate: 2026-08-20
+updateDate: 2026-08-20
+description: 'Homemade Turing complete 8-bit breadboard CPU (SAP architecture)'
+author: 'Dorian Kolis'
+featured: true
+draft: true
+image:
+  url: 'https://r2bucket.dekolis.com/8-bit%20CPU/IMG_7151.jpeg'
+  alt: 'A large group of breadboards stuck together covered with rows of large black ICs, LEDs, and hundreds of hand-bent colored jumper wires connecting between them.'
+---
+
+This project was built from [Ben Eater's kit](https://eater.net/8bit), but it turns out that a kit of parts and schematics is least of your needs when building a computer from scratch. It's also not lost on me that there are even deeper levels of "from scratch." I found [somebody on youtube](https://youtu.be/_eo8l7HP-9U) building a simliar project from discrete transistors instead of packaged CMOS logic gates. And for that matter you could [manufacture any of these semiconductor devices yourself](https://www.youtube.com/@Dr.Semiconductor). You have to pick some level that is appropriate for the novelty of it and the learning. For me, that was what this kit provided.
+
+# Overview
+
+The computer is entirely built on breadboards, as you can see in the pictures. It is powered off of a 5V DC supply that runs down each side of the computer on main distribution rails and then branches off along every power rail of every breadboard, and they are tied across the middle. That middle part is 8 power rails that were repurposed to be the 8-bit data bus of the computer.
+
+Power rails each have a 22µF electrolytic capacitor, with one main 1000µF capacitor to filter lower frequency noise. Each logic and EEPROM chip has a ceramic 0.1µF capacitor next to it to smooth out power even more. As I learned, distributing power with as little resistance as possible is critical for keeping all the chips within their defined voltage range.
+
+The wire colors are generally standardized: red and black for 0V and 5V; white for clock (and inverse clock); yellow for control signals; green for logic connections; and blue for bus connections. I had to keep this code up to stay organized and not lose track of what connections were what.
+
+## Components
+
+The top left is the clock. The far left potentiometer adjusts the frequency, which I measured goes from about ___ to ___ (MEASURE).
+
+Below that is the memory address register, and below that is the actual 16 bytes of memory.
+
+Below the memory is the memory programming mux, which lets the user manually input memory (this is important because there is no persistent storage or bootloader) or read/write to the bus.
+
+Below all the memory is the instruction register, then the microcode counter, and then the instruction microcode translation itself, in EEPROM.
+
+On the right side of the bus, from the top, is first the program counter, with flag registers on the right of that same breadboard.
+
+Below that is the A register, ALU, and then B register.
+
+Below the B register is the output module. The breadboard below that is kind of a random place for extra stuff, and has the output register, an AND gate chip, and a NOT gate chip.
+
+The final breadboard on the bottom right is the control word, where all control signals converge and return to the microcode EEPROM.
+
+[INSERT LABELED IMAGE]
+
+# Capabilities
+
+# Future Additions
