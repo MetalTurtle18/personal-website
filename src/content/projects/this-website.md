@@ -1,11 +1,10 @@
 ---
 title: 'Personal Website (this one!)'
-pubDate: 2026-01-15
-updateDate: 2026-01-25
-# chronoDate: 2026-01
-description: 'This is the short description of a project that shows on the content card.'
-summary: "This is a slightly longer description that will show at the top of the article. I will write several sentences here so it can showcase the layout that I will make for the summary section of an article. I am going to keep writing now to pad this out a bit more and take up a few more lines of the page. I think writing this one more sentence will probably be enough so let's just keep going on a little bit longer and then it'll be good to stop and see what this looks like on the page."
-author: 'Some Computer'
+pubDate: 2026-10-08
+# updateDate: 2026-01-25
+chronoDate: 2026-06
+description: 'Custom-built site with no-json-by-default with Astro.build'
+author: 'Dorian Kolis'
 featured: false
 draft: true
 image:
@@ -13,53 +12,12 @@ image:
   alt: 'The Astro logo on a dark background with a pink glow.'
 ---
 
-This is a template project. I am not including a title in the Markdown because the front matter will be rendered as a title.
+This article is about how I build (and am building) this personal portfolio website. It will probably continue to be updated for a long time as I add features when I need them. Who knows, the whole site may change one day.
 
-# h1 Heading
+# Motivation
 
-## h2 Heading
+I have tried to build a portfolio website several times over the last five or so years (this will be obvious by the multiple "personal website" repositories littering my GitHub profile and the graveyard branch in this repo). I continued to fail to build enough momentum to keep going and publish it. One reason is the difficulty in writing content for the site, about which I poured my brain out [in this article](/blog/writing-project-articles).
 
-### h3 Heading
+I came into the latest iteration with a clear goal: whatever I start, I must see through to publish *something* because I'm getting to the point where I need to be able to share the things I have done. I had tried pure html/css, Next.js, Svelte, and other things before. I found Astro this time, and I liked it because it can stay out of the way and let me create the site without a ton of training wheels (and when I do it that way, it makes a point to not introduce a bunch of bloat). And it allows all the fancy js framework things if I decide I need them one day in the future.
 
-#### h4 Heading
-
-##### h5 Heading
-
-###### h6 Heading
-
-**This is bold text**
-
-_This is italic text_
-
-~~This is striken-through text~~
-
-1. An ordered list starts here
-2. Here's another item
-
-- An unordered list starts here
-- Here's another item
-
-* [ ] This is a task list item
-* [x] This is a completed task
-
-[here's a link](https://www.google.com)
-
-![This is an image](https://upload.wikimedia.org/wikipedia/en/f/f7/RickRoll.png)
-
-This is some `inline code` and below is a code block:
-
-```python
-for i in range(10):
-    print(i)
-print("Hello World!")
-```
-
-> block quote here
->
-> this is another line in the block quote
-
----
-
-There is a horizontal rule up there ^ see
-
-And more Markdown things but look them up if you need them.
+I did some thinking and writing about how I would keep up writing articles, and that is going alright as I type this. Once I had those two components---the tech and the mental strategy---I could publish something that I am now comfortable sharing in its early state.

@@ -11,6 +11,9 @@ image:
   alt: 'A large group of breadboards stuck together covered with rows of large black ICs, LEDs, and hundreds of hand-bent colored jumper wires connecting between them.'
 ---
 
+import Figure from '../../components/Figure.astro';
+import ImageGrid from '../../components/ImageGrid.astro';
+
 This project was built from [Ben Eater's kit](https://eater.net/8bit), but it turns out that a kit of parts and schematics is least of your needs when building a computer from scratch. It's also not lost on me that there are even deeper levels of "from scratch." I found [somebody on youtube](https://youtu.be/_eo8l7HP-9U) building a simliar project from discrete transistors instead of packaged CMOS logic gates. And for that matter you could [manufacture any of these semiconductor devices yourself](https://www.youtube.com/@Dr.Semiconductor). You have to pick some level that is appropriate for the novelty of it and the learning. For me, that was what this kit provided.
 
 # Overview
@@ -23,7 +26,7 @@ The wire colors are generally standardized: red and black for 0V and 5V; white f
 
 ## Components
 
-The top left is the clock. The far left potentiometer adjusts the frequency, which I measured goes from about ___ to ___ (MEASURE).
+The top left is the clock. The far left potentiometer adjusts the frequency, which I measured goes from about ___ to ___ (NEED TO MEASURE).
 
 Below that is the memory address register, and below that is the actual 16 bytes of memory.
 
@@ -43,4 +46,10 @@ The final breadboard on the bottom right is the control word, where all control 
 
 # Capabilities
 
+
+
 # Future Additions
+
+The first thing I need to add is a programmer. Right now, the only way to run a program is to manually load it into RAM. I want to frame the computer and hang it on a wall, and so I will need to create an automated program loader, probably with an arduino.
+
+As much as I would love to keep adding more memory, more bus lanes, more registers, more operations... breadboards are not really the way to go. I had so much fun building this, but I think the next step for me is to move onto an HDL to create my computers.
