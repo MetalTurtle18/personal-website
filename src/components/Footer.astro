@@ -79,9 +79,6 @@ const commitHash = COMMIT_REF?.slice(0, 7) || GITHUB_SHA?.slice(0, 7) || 'indev'
         {PREVIEW && <a href="https://dekolis.com">View Public (non-preview) Site</a>}
       </div>
     </div>
-    <div class="footer-ai-notice" title="Sorry, I still think I am a better writer.">
-      <p>Unless otherwise indicated, no text content on this website is written with AI.</p>
-    </div>
   </div>
 </footer>
 
@@ -184,20 +181,6 @@ const commitHash = COMMIT_REF?.slice(0, 7) || GITHUB_SHA?.slice(0, 7) || 'indev'
     padding: 0.1rem 0.3rem;
     border-radius: 4px;
     font-family: 'JetBrains Mono', 'Courier New', monospace;
-  }
-
-  .footer-ai-notice {
-    text-align: center;
-    background: white;
-    border: 1px solid #047857;
-    border-radius: 0.75rem;
-  }
-
-  .footer-ai-notice p {
-    color: #6b7280;
-    font-size: 0.7rem;
-    padding: 0 0.3rem;
-    margin: 0.5rem 0;
   }
 
   @media (max-width: 350px) {
